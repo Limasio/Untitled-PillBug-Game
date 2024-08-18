@@ -46,6 +46,11 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
+        //Application.targetFrameRate = 60;
+
+
+
+
         if (PlayerPrefs.GetInt("Fullscreen") == 1)
         {
             Screen.SetResolution(PlayerPrefs.GetInt("Resolution Width"), PlayerPrefs.GetInt("Resolution Height"), (Screen.fullScreen = true));
