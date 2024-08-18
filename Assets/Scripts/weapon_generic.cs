@@ -28,10 +28,6 @@ public class weapon_generic : MonoBehaviour
 
     private bool holdingAltFire = false;
 
-    //GameManager
-    [SerializeField] GameObject gameManager;
-    private GameManager gameManagerInstance;
-
     public bool getHasClip()
     {
         return hasClip;
@@ -56,205 +52,197 @@ public class weapon_generic : MonoBehaviour
         currentClipSize = clipSize;
         isReloading = false;
         reloadRequested = false;
-        gameManagerInstance = gameManager.GetComponent<GameManager>();
-
-
     }
 
     // Update is called once per frame
     void LateUpdate()
     {
-        if (!(gameManagerInstance.playerIsLocked || gameManagerInstance.gameIsPaused))
+        if (Automatic)
         {
-            
-            if (Automatic)
+            if (Input.GetMouseButton(0))
             {
-                if (Input.GetMouseButton(0))
+                if (currentCooldown <= 0f)
                 {
-                    if (currentCooldown <= 0f)
+                    if (currentClipSize > 0 && !isReloading)
                     {
-                        if (currentClipSize > 0 && !isReloading)
+                        onGunFire?.Invoke();
+                        currentCooldown = fireCooldown;
+                        if (hasClip)
                         {
-                            onGunFire?.Invoke();
-                            currentCooldown = fireCooldown;
-                            if (hasClip)
-                            {
-                                currentClipSize = currentClipSize - 1f;
-                            }
-                            
+                            currentClipSize = currentClipSize - 1f;
                         }
-                        else if (currentReloadTime <= 0f && !isReloading)
-                        {
-                            onGunReload?.Invoke();
-                            currentReloadTime = reloadTime;
-                            isReloading = true;
-                        }
-                        else if (currentReloadTime <= 0f && isReloading)
-                        {
-                            isReloading = false;
-                            currentClipSize = clipSize;
-                            reloadRequested = false;
-                        }
-
+                        
+                    }
+                    else if (currentReloadTime <= 0f && !isReloading)
+                    {
+                        onGunReload?.Invoke();
+                        currentReloadTime = reloadTime;
+                        isReloading = true;
+                    }
+                    else if (currentReloadTime <= 0f && isReloading)
+                    {
+                        isReloading = false;
+                        currentClipSize = clipSize;
+                        reloadRequested = false;
                     }
 
                 }
-                else if (Input.GetMouseButton(1) && hasAltFire)
-                {
-                    if (currentAltCooldown <= 0f)
-                    {
-                        if (currentClipSize > 0 && !isReloading)
-                        {
-                            onGunAltFire?.Invoke();
-                            currentAltCooldown = altFireCooldown;
-                            if (hasClip)
-                            {
-                                //currentClipSize = currentClipSize - 1f;
-                            }
 
-                        }
-                        else if (currentReloadTime <= 0f && !isReloading)
+            }
+            else if (Input.GetMouseButton(1) && hasAltFire)
+            {
+                if (currentAltCooldown <= 0f)
+                {
+                    if (currentClipSize > 0 && !isReloading)
+                    {
+                        onGunAltFire?.Invoke();
+                        currentAltCooldown = altFireCooldown;
+                        if (hasClip)
                         {
-                            onGunReload?.Invoke();
-                            currentReloadTime = reloadTime;
-                            isReloading = true;
-                        }
-                        else if (currentReloadTime <= 0f && isReloading)
-                        {
-                            isReloading = false;
-                            currentClipSize = clipSize;
-                            reloadRequested = false;
+                            //currentClipSize = currentClipSize - 1f;
                         }
 
                     }
-
-                }
-                else if (Input.GetKey(KeyCode.R) && currentClipSize < clipSize)
-                {
-                    reloadRequested = true;
-                }
-                else
-                {
-                    if (currentCooldown <= 0f)
+                    else if (currentReloadTime <= 0f && !isReloading)
                     {
-                        if ((reloadRequested || currentClipSize < 1) && currentReloadTime <= 0f && !isReloading)
-                        {
-                            onGunReload?.Invoke();
-                            currentReloadTime = reloadTime;
-                            isReloading = true;
-                        }
-                        else if ((reloadRequested || currentClipSize < 1) && currentReloadTime <= 0f && isReloading)
-                        {
-                            isReloading = false;
-                            currentClipSize = clipSize;
-                            reloadRequested = false;
-                        }
-
+                        onGunReload?.Invoke();
+                        currentReloadTime = reloadTime;
+                        isReloading = true;
                     }
+                    else if (currentReloadTime <= 0f && isReloading)
+                    {
+                        isReloading = false;
+                        currentClipSize = clipSize;
+                        reloadRequested = false;
+                    }
+
                 }
+
+            }
+            else if (Input.GetKey(KeyCode.R) && currentClipSize < clipSize)
+            {
+                reloadRequested = true;
             }
             else
             {
-                if (Input.GetMouseButtonDown(0))
+                if (currentCooldown <= 0f)
                 {
-                    if (currentCooldown <= 0f)
+                    if ((reloadRequested || currentClipSize < 1) && currentReloadTime <= 0f && !isReloading)
                     {
-                        if (currentClipSize > 0 && !isReloading)
-                        {
-                            onGunFire?.Invoke();
-                            currentCooldown = fireCooldown;
-                            if (hasClip)
-                            {
-                                currentClipSize = currentClipSize - 1f;
-                            }
-
-                        }
-                        else if (currentReloadTime <= 0f && !isReloading)
-                        {
-                            onGunReload?.Invoke();
-                            currentReloadTime = reloadTime;
-                            isReloading = true;
-                        }
-                        else if (currentReloadTime <= 0f && isReloading)
-                        {
-                            isReloading = false;
-                            currentClipSize = clipSize;
-                            reloadRequested = false;
-                        }
-
+                        onGunReload?.Invoke();
+                        currentReloadTime = reloadTime;
+                        isReloading = true;
+                    }
+                    else if ((reloadRequested || currentClipSize < 1) && currentReloadTime <= 0f && isReloading)
+                    {
+                        isReloading = false;
+                        currentClipSize = clipSize;
+                        reloadRequested = false;
                     }
 
-                }
-                else if (Input.GetMouseButtonDown(1) && hasAltFire)
-                {
-                    if (currentAltCooldown <= 0f)
-                    {
-                        if (currentClipSize > 0 && !isReloading)
-                        {
-                            onGunAltFire?.Invoke();
-                            holdingAltFire = true;
-                            currentAltCooldown = altFireCooldown;
-                            if (hasClip)
-                            {
-                                //currentClipSize = currentClipSize - 1f;
-                            }
-
-                        }
-                        else if (currentReloadTime <= 0f && !isReloading)
-                        {
-                            onGunReload?.Invoke();
-                            currentReloadTime = reloadTime;
-                            isReloading = true;
-                        }
-                        else if (currentReloadTime <= 0f && isReloading)
-                        {
-                            isReloading = false;
-                            currentClipSize = clipSize;
-                            reloadRequested = false;
-                        }
-
-                    }
-
-                }
-                else if (Input.GetKey(KeyCode.R) && currentClipSize < clipSize)
-                {
-                    reloadRequested = true;
-                }
-                else
-                {
-                    if (currentCooldown <= 0f)
-                    {
-                        if ((reloadRequested || currentClipSize < 1) && currentReloadTime <= 0f && !isReloading)
-                        {
-                            onGunReload?.Invoke();
-                            currentReloadTime = reloadTime;
-                            isReloading = true;
-                        }
-                        else if ((reloadRequested || currentClipSize < 1) && currentReloadTime <= 0f && isReloading)
-                        {
-                            isReloading = false;
-                            currentClipSize = clipSize;
-                            reloadRequested = false;
-                        }
-
-                    }
                 }
             }
-
-            if (Input.GetMouseButtonUp(0))
+        }
+        else
+        {
+            if (Input.GetMouseButtonDown(0))
             {
-                onGunStopFire?.Invoke();
-            }
-            if (Input.GetMouseButtonUp(1) || (Input.GetMouseButton(1) == false && holdingAltFire == true))
-            {
-                onGunStopAltFire?.Invoke();
-                holdingAltFire = false;
-            }
+                if (currentCooldown <= 0f)
+                {
+                    if (currentClipSize > 0 && !isReloading)
+                    {
+                        onGunFire?.Invoke();
+                        currentCooldown = fireCooldown;
+                        if (hasClip)
+                        {
+                            currentClipSize = currentClipSize - 1f;
+                        }
 
-            currentCooldown -= Time.deltaTime;
-            currentAltCooldown -= Time.deltaTime;
-            currentReloadTime -= Time.deltaTime;
+                    }
+                    else if (currentReloadTime <= 0f && !isReloading)
+                    {
+                        onGunReload?.Invoke();
+                        currentReloadTime = reloadTime;
+                        isReloading = true;
+                    }
+                    else if (currentReloadTime <= 0f && isReloading)
+                    {
+                        isReloading = false;
+                        currentClipSize = clipSize;
+                        reloadRequested = false;
+                    }
+
+                }
+
+            }
+            else if (Input.GetMouseButtonDown(1) && hasAltFire)
+            {
+                if (currentAltCooldown <= 0f)
+                {
+                    if (currentClipSize > 0 && !isReloading)
+                    {
+                        onGunAltFire?.Invoke();
+                        holdingAltFire = true;
+                        currentAltCooldown = altFireCooldown;
+                        if (hasClip)
+                        {
+                            //currentClipSize = currentClipSize - 1f;
+                        }
+
+                    }
+                    else if (currentReloadTime <= 0f && !isReloading)
+                    {
+                        onGunReload?.Invoke();
+                        currentReloadTime = reloadTime;
+                        isReloading = true;
+                    }
+                    else if (currentReloadTime <= 0f && isReloading)
+                    {
+                        isReloading = false;
+                        currentClipSize = clipSize;
+                        reloadRequested = false;
+                    }
+
+                }
+
+            }
+            else if (Input.GetKey(KeyCode.R) && currentClipSize < clipSize)
+            {
+                reloadRequested = true;
+            }
+            else
+            {
+                if (currentCooldown <= 0f)
+                {
+                    if ((reloadRequested || currentClipSize < 1) && currentReloadTime <= 0f && !isReloading)
+                    {
+                        onGunReload?.Invoke();
+                        currentReloadTime = reloadTime;
+                        isReloading = true;
+                    }
+                    else if ((reloadRequested || currentClipSize < 1) && currentReloadTime <= 0f && isReloading)
+                    {
+                        isReloading = false;
+                        currentClipSize = clipSize;
+                        reloadRequested = false;
+                    }
+
+                }
+            }
         }
 
+        if (Input.GetMouseButtonUp(0))
+        {
+            onGunStopFire?.Invoke();
+        }
+        if (Input.GetMouseButtonUp(1) || (Input.GetMouseButton(1) == false && holdingAltFire == true))
+        {
+            onGunStopAltFire?.Invoke();
+            holdingAltFire = false;
+        }
+
+        currentCooldown -= Time.deltaTime;
+        currentAltCooldown -= Time.deltaTime;
+        currentReloadTime -= Time.deltaTime;
     }
 }

@@ -1,5 +1,6 @@
 using System.Security.Cryptography;
 using UnityEngine;
+using System.Collections;
 
 public class Hitscan_GrapplingGun : MonoBehaviour
 {
@@ -134,7 +135,15 @@ public class Hitscan_GrapplingGun : MonoBehaviour
 
     public void Grapple()
     {
+        // m_rigidbody.AddForce((grapplePoint - (Vector2)gunHolder.position).normalized * grappleForce);
+        StartCoroutine(applyGrapplingForce());
+    }
+
+    protected IEnumerator applyGrapplingForce()
+    {
+        yield return new WaitForFixedUpdate();
         m_rigidbody.AddForce((grapplePoint - (Vector2)gunHolder.position).normalized * grappleForce);
+        yield break;
     }
 
     private void OnDrawGizmosSelected()
