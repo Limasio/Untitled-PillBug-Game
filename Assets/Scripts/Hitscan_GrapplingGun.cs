@@ -52,6 +52,8 @@ public class Hitscan_GrapplingGun : MonoBehaviour
     [HideInInspector] public Vector2 grapplePoint;
     [HideInInspector] public Vector2 grappleDistanceVector;
 
+    [SerializeField] LayerMask targetLayers;
+
     private void Start()
     {
         grappleRope.enabled = false;
@@ -118,18 +120,28 @@ public class Hitscan_GrapplingGun : MonoBehaviour
     void SetGrapplePoint()
     {
         Vector2 distanceVector = m_camera.ScreenToWorldPoint(Input.mousePosition) - gunPivot.position;
-        if (Physics2D.Raycast(firePoint.position, distanceVector.normalized))
+        // if (Physics2D.Raycast(firePoint.position, distanceVector.normalized))
+        // {
+        //     RaycastHit2D _hit = Physics2D.Raycast(firePoint.position, distanceVector.normalized);
+        //     if (_hit.transform.gameObject.layer == grappableLayerNumber || grappleToAll)
+        //     {
+        //         if (Vector2.Distance(_hit.point, firePoint.position) <= maxDistnace || !hasMaxDistance)
+        //         {
+        //             grapplePoint = _hit.point;
+        //             grappleDistanceVector = grapplePoint - (Vector2)gunPivot.position;
+        //             grappleRope.enabled = true;
+        //         }
+        //     }
+        // }
+        RaycastHit2D _hit = Physics2D.Raycast(firePoint.position, distanceVector.normalized, 500f, targetLayers);
+        if (_hit.collider != null)
         {
-            RaycastHit2D _hit = Physics2D.Raycast(firePoint.position, distanceVector.normalized);
-            if (_hit.transform.gameObject.layer == grappableLayerNumber || grappleToAll)
-            {
-                if (Vector2.Distance(_hit.point, firePoint.position) <= maxDistnace || !hasMaxDistance)
+            if (Vector2.Distance(_hit.point, firePoint.position) <= maxDistnace || !hasMaxDistance)
                 {
                     grapplePoint = _hit.point;
                     grappleDistanceVector = grapplePoint - (Vector2)gunPivot.position;
                     grappleRope.enabled = true;
                 }
-            }
         }
     }
 

@@ -17,6 +17,10 @@ public class Hitscan_DoubleBarrel : MonoBehaviour
     public Rigidbody2D m_rigidbody;
     [SerializeField] float shotgunForce;
 
+    [SerializeField] TimerManager timer;
+    [SerializeField] LayerMask targetLayers;
+    [SerializeField] float gunDistance;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -32,5 +36,25 @@ public class Hitscan_DoubleBarrel : MonoBehaviour
     public void Shoot()
     {
         m_rigidbody.AddForce(((Vector2)gunHolderDB.position - mousePos).normalized * shotgunForce);
+        Debug.Log("gun: " + (Vector2)gunHolderDB.position);
+        Debug.Log("mouse: " + mousePos);
+        Debug.Log("direction: " + (mousePos - (Vector2)gunHolderDB.position).normalized);
+        RaycastHit2D hit = Physics2D.Raycast((Vector2)gunHolderDB.position, (mousePos - (Vector2)gunHolderDB.position).normalized, gunDistance, targetLayers);
+        if (hit.collider != null)
+        {
+            GameObject target = hit.collider.gameObject;
+            Debug.Log("hit: " + target);
+            if (target.layer == 7)
+            {
+                Debug.Log("shot " + target);
+                Destroy(target);
+            }
+            else if(target.layer == 8)
+            {
+                Debug.Log("shot " + target);
+                timer.AddTime();
+                Destroy(target);
+            }
+        }
     }
 }
