@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using Cinemachine;
 
 public class PlayerModeManager : MonoBehaviour
@@ -9,6 +10,7 @@ public class PlayerModeManager : MonoBehaviour
     private Rigidbody2D pillbugRigidbody;
     private Hitscan_GrapplingGun grapplingGun;
     [SerializeField] GameObject bigMode;
+    [SerializeField] BigModeController bigController;
     private Rigidbody2D bigModeRigidbody;
     [SerializeField] GameObject cameraObject;
     private CinemachineVirtualCamera camera; 
@@ -21,6 +23,8 @@ public class PlayerModeManager : MonoBehaviour
     [SerializeField] float bigTimeLeft;
     [SerializeField] float bigModeBoost;
     [SerializeField] Vector2 bigModeInitialBoost;
+    [SerializeField] Slider bigChargeSlider;
+    private bool endingBigMode;
  
     // Start is called before the first frame update
     void Start()
@@ -29,6 +33,7 @@ public class PlayerModeManager : MonoBehaviour
         grapplingGun = pillbug.GetComponentInChildren<Hitscan_GrapplingGun>();
         bigModeRigidbody = bigMode.GetComponent<Rigidbody2D>();
         camera = cameraObject.GetComponent<CinemachineVirtualCamera>();
+        bigChargeSlider.value = bigCharges;
     }
 
     // Update is called once per frame
@@ -38,33 +43,28 @@ public class PlayerModeManager : MonoBehaviour
         {
             if (bigTimeLeft > 0f)
             {
-                if (Input.GetKey("space"))
-                {
-                    bigTimeLeft -= Time.deltaTime;
-                }
-                else
-                {
-                    bigTimeLeft = 0f;
-                    EndBigMode();
-                }
+                bigTimeLeft -= Time.deltaTime;
             }
             else 
             {
                 EndBigMode();
             }
         }
-        else if (Input.GetKey("space") && bigCharges > 0)
+        else if (Input.GetKeyDown("space") && bigCharges > 0)
         {
             bigTimeLeft = bigTime;
             bigCharges--;
+            bigChargeSlider.value = bigCharges;
             ActivateBigMode();
         }
         else if (bigCharges < bigChargeMax)
         {
             bigChargeTimeCounter += Time.deltaTime;
+            bigChargeSlider.value = bigChargeTimeCounter / bigChargeTime;
             if (bigChargeTimeCounter >= bigChargeTime)
             {
                 bigCharges++;
+                // bigChargeSlider.value = bigCharges;
                 bigChargeTimeCounter = 0f;
             }
         }
@@ -81,9 +81,16 @@ public class PlayerModeManager : MonoBehaviour
         pillbug.SetActive(false);
         isBigMode = true;
         bigModeRigidbody.AddForce(bigModeInitialBoost, ForceMode2D.Impulse);
+        endingBigMode = false;
     }
 
     void EndBigMode()
+    {
+        if (!endingBigMode) bigController.ShrinkDisable();
+        endingBigMode = true;
+    }
+
+    public void SwapBack()
     {
         pillbug.SetActive(true);
         pillbug.transform.position = bigMode.transform.position;

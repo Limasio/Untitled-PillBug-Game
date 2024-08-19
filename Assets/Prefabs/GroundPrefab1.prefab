@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 6741404666711058019}
   - component: {fileID: 7533393838433384005}
   - component: {fileID: 7165034416589383911}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: GroundPrefab1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
