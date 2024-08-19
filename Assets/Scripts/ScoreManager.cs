@@ -9,7 +9,7 @@ public class ScoreManager : MonoBehaviour
     public bool IsGameInPlay;
 
     private float currentScoreFloat;
-    private int currentScore;
+    public int currentScore;
     
     // Start is called before the first frame update
     void Awake()

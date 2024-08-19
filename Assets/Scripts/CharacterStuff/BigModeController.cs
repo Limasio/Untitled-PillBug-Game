@@ -78,7 +78,7 @@ public class BigModeController : MonoBehaviour
         {
             shrinkTimeCounter += Time.deltaTime;
             transform.localScale = Vector3.Lerp(initialSize, new Vector3(1.5f, 1.5f, 1.5f), shrinkTimeCounter / shrinkTime);
-            camera.m_Lens.OrthographicSize = Mathf.Lerp(initialCam, 8f, shrinkTimeCounter / shrinkTime);
+            camera.m_Lens.OrthographicSize = Mathf.Lerp(initialCam, 12f, shrinkTimeCounter / shrinkTime);
             transposer.m_ScreenX = Mathf.Lerp(initialCamX, 0.5f, shrinkTimeCounter / shrinkTime);
             yield return null;
         }

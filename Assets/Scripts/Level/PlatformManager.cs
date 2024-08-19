@@ -9,7 +9,11 @@ public class PlatformManager : MonoBehaviour
     [SerializeField] GameObject plat2;
     [SerializeField] GameObject plat3;
     [SerializeField] GameObject plat4;
+    [SerializeField] GameObject plat5;
+    [SerializeField] GameObject plat6;
+    [SerializeField] GameObject plat7;
     [SerializeField] GameObject player;
+    [SerializeField] GameObject player2;
     //[SerializeField] Transform plat3;
 
     [SerializeField] int numberOfObjects;
@@ -37,19 +41,31 @@ public class PlatformManager : MonoBehaviour
         for (int i = 0; i < numberOfObjects; i++)
         {
             float randomNumber = Random.Range(0.0f, 100.0f);
-            if(randomNumber <= 33.3f)
+            if(randomNumber <= 15f)
             {
                 objectQueue.Enqueue((GameObject)Instantiate(plat1));
             }
-            else if (randomNumber <= 66.6f)
+            else if (randomNumber <= 30f)
             {
                 objectQueue.Enqueue((GameObject)Instantiate(plat2));
+            }
+            else if(randomNumber <= 45f)
+            {
+                objectQueue.Enqueue((GameObject)Instantiate(plat5));
+            }
+            else if (randomNumber <= 60f)
+            {
+                objectQueue.Enqueue((GameObject)Instantiate(plat6));
             }
             else if (randomNumber <= 77.7f && currentTimers < maxTimers && timerSpacingCounter == minTimerSpacing)
             {
                 objectQueue.Enqueue((GameObject)Instantiate(plat4));
                 currentTimers++;
                 timerSpacingCounter = 0;
+            }
+            else if (randomNumber <= 85f)
+            {
+                objectQueue.Enqueue((GameObject)Instantiate(plat5));
             }
             else
             {
@@ -70,7 +86,7 @@ public class PlatformManager : MonoBehaviour
 
     private void Update()
     {
-        if(objectQueue.Peek().transform.localPosition.x + recycleOffset < player.transform.localPosition.x) //Checking against total distance traveled by player
+        if(objectQueue.Peek().transform.localPosition.x + recycleOffset < player.transform.localPosition.x || objectQueue.Peek().transform.localPosition.x + recycleOffset < player2.transform.localPosition.x) //Checking against total distance traveled by player
         {
             Recycle2();
             Debug.Log("Ran Recycle2");
@@ -115,14 +131,24 @@ public class PlatformManager : MonoBehaviour
         position.y += scale.y * 0.5f;
 
         float randomNumber = Random.Range(0.0f, 100.0f);
-        if (randomNumber <= 33.3f)
+        if (randomNumber <= 15f)
         {
             GameObject platClone = Instantiate(plat1, position, Quaternion.identity);
             objectQueue.Enqueue(platClone);
         }
-        else if (randomNumber <= 66.6f)
+        else if (randomNumber <= 30f)
         {
             GameObject platClone = Instantiate(plat2, position, Quaternion.identity);
+            objectQueue.Enqueue(platClone);
+        }
+        else if (randomNumber <= 45f)
+        {
+            GameObject platClone = Instantiate(plat5, position, Quaternion.identity);
+            objectQueue.Enqueue(platClone);
+        }
+        else if (randomNumber <= 60f)
+        {
+            GameObject platClone = Instantiate(plat6, position, Quaternion.identity);
             objectQueue.Enqueue(platClone);
         }
         else if (randomNumber <= 77.7f && currentTimers < maxTimers && timerSpacingCounter == minTimerSpacing)
@@ -131,6 +157,11 @@ public class PlatformManager : MonoBehaviour
             objectQueue.Enqueue(platClone);
             //currentTimers++;
             timerSpacingCounter = 0;
+        }
+        else if (randomNumber <= 85f)
+        {
+            GameObject platClone = Instantiate(plat7, position, Quaternion.identity);
+            objectQueue.Enqueue(platClone);
         }
         else
         {
