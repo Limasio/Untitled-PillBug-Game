@@ -26,11 +26,11 @@ public class PlatformManager : MonoBehaviour
         for (int i = 0; i < numberOfObjects; i++)
         {
             float randomNumber = Random.Range(0.0f, 100.0f);
-            if(randomNumber <= 25.0f)
+            if(randomNumber <= 33.3f)
             {
                 objectQueue.Enqueue((Transform)Instantiate(plat1));
             }
-            else if (randomNumber <= 50.0f)
+            else if (randomNumber <= 66.6f)
             {
                 objectQueue.Enqueue((Transform)Instantiate(plat2));
             }
