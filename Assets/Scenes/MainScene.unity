@@ -3575,11 +3575,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 736964a60239dfb44bac23f820dd9851, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  plat1: {fileID: 4397943676557270881, guid: 6f761a071cc2346429d480c5e29bf8b3, type: 3}
-  plat2: {fileID: 1705637100919194790, guid: a0a6fbd114976ff4b8369f66e9666ea1, type: 3}
-  plat3: {fileID: 356727420616363388, guid: 0501d453dc1d03241b7a6d5dea565832, type: 3}
+  plat1: {fileID: 1985839637899744382, guid: a0a6fbd114976ff4b8369f66e9666ea1, type: 3}
+  plat2: {fileID: 1558467454804308998, guid: 6f761a071cc2346429d480c5e29bf8b3, type: 3}
+  plat3: {fileID: 8680139250794226141, guid: 0501d453dc1d03241b7a6d5dea565832, type: 3}
+  plat4: {fileID: 8680139250794226141, guid: a8deb92ae8fa62442b65ad5103a6b47d, type: 3}
   player: {fileID: 1027186433}
   numberOfObjects: 50
+  maxTimers: 4
+  minTimerSpacing: 10
   recycleOffset: 400
   startPosition: {x: 25, y: 15}
   minSize: {x: 1, y: 1}
