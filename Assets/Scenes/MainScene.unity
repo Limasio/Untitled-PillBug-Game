@@ -709,7 +709,7 @@ Canvas:
   m_VertexColorAlwaysGammaSpace: 0
   m_AdditionalShaderChannelsFlag: 25
   m_UpdateRectTransformForStandalone: 0
-  m_SortingLayerID: 0
+  m_SortingLayerID: 1277019825
   m_SortingOrder: 0
   m_TargetDisplay: 0
 --- !u!224 &490560949
@@ -1210,6 +1210,64 @@ MonoBehaviour:
   boostForce: 10
   groundCheckOffset: 0.2
   groundCheckRadius: 0.1
+--- !u!1 &639809463
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 639809465}
+  - component: {fileID: 639809464}
+  m_Layer: 0
+  m_Name: GroundManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &639809464
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 639809463}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c2105a735b9ac99438f2c2bfc3634c2f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ground1: {fileID: 745865344743577199, guid: 067a3198d50efce468b7e79116a44eff, type: 3}
+  ground2: {fileID: 5069667384618805242, guid: b4bbc12d7751d2e48bb49962143cffd6, type: 3}
+  ground3: {fileID: 4076137604886889556, guid: fa93d381134265f45bb584effcedd629, type: 3}
+  ground4: {fileID: 4630488725012095993, guid: 2489499d0d577424284cec632bba8a38, type: 3}
+  player: {fileID: 1027186433}
+  numberOfObjects: 50
+  recycleOffset: 400
+  startPosition: {x: 24, y: -2.5}
+  minSize: {x: 1, y: 1}
+  maxSize: {x: 1, y: 1}
+  minGap: {x: 50, y: 0}
+  maxGap: {x: 50, y: 0}
+  minY: -2.5
+  maxY: -2.5
+--- !u!4 &639809465
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 639809463}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 1.5052515, y: -6.5818033, z: 6.3879848}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &664625309
 GameObject:
   m_ObjectHideFlags: 0
@@ -2749,12 +2807,9 @@ GameObject:
   - component: {fileID: 1507696171}
   - component: {fileID: 1507696173}
   - component: {fileID: 1507696172}
+  - component: {fileID: 1667931173}
   m_Layer: 5
   m_Name: TimerBox
-  - component: {fileID: 1667931172}
-  - component: {fileID: 1667931173}
-  m_Layer: 0
-  m_Name: Ground Manager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2762,8 +2817,6 @@ GameObject:
   m_IsActive: 1
 --- !u!224 &1507696171
 RectTransform:
---- !u!4 &1667931172
-Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -2777,21 +2830,31 @@ Transform:
   - {fileID: 825929991}
   m_Father: {fileID: 490560949}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 40, y: -490}
-  m_SizeDelta: {x: 220, y: 64}
+  m_AnchorMin: {x: 0.5, y: 0}
+  m_AnchorMax: {x: 0.5, y: 0}
+  m_AnchoredPosition: {x: 0, y: 50}
+  m_SizeDelta: {x: 200, y: 64}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1507696172
-  m_GameObject: {fileID: 1667931171}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -0.2851899}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1507696170}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 0}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!222 &1507696173
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1507696170}
+  m_CullTransparentMesh: 1
 --- !u!114 &1667931173
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2822,34 +2885,6 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!222 &1507696173
-CanvasRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1507696170}
-  m_CullTransparentMesh: 1
-  m_GameObject: {fileID: 1667931171}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c2105a735b9ac99438f2c2bfc3634c2f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  ground1: {fileID: 745865344743577199, guid: 067a3198d50efce468b7e79116a44eff, type: 3}
-  ground2: {fileID: 5069667384618805242, guid: b4bbc12d7751d2e48bb49962143cffd6, type: 3}
-  ground3: {fileID: 4076137604886889556, guid: fa93d381134265f45bb584effcedd629, type: 3}
-  ground4: {fileID: 4630488725012095993, guid: 2489499d0d577424284cec632bba8a38, type: 3}
-  player: {fileID: 1027186433}
-  numberOfObjects: 50
-  recycleOffset: 400
-  startPosition: {x: 24, y: -2.5}
-  minSize: {x: 1, y: 1}
-  maxSize: {x: 1, y: 1}
-  minGap: {x: 50, y: 0}
-  maxGap: {x: 50, y: 0}
-  minY: -2.5
-  maxY: -2.5
 --- !u!1 &1865419944
 GameObject:
   m_ObjectHideFlags: 0
@@ -3505,9 +3540,9 @@ SceneRoots:
   - {fileID: 1147177301}
   - {fileID: 113172043}
   - {fileID: 2095206052}
-  - {fileID: 1667931172}
   - {fileID: 1185226033}
   - {fileID: 336142671}
   - {fileID: 2010991955}
   - {fileID: 957279615}
   - {fileID: 607732372}
+  - {fileID: 639809465}
