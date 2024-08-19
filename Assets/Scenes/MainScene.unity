@@ -629,6 +629,7 @@ MonoBehaviour:
   bigTime: 10
   bigTimeLeft: 0
   bigModeBoost: 1.5
+  bigModeInitialBoost: {x: 50, y: 0}
 --- !u!1 &490560945
 GameObject:
   m_ObjectHideFlags: 0

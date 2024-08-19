@@ -20,7 +20,8 @@ public class PlayerModeManager : MonoBehaviour
     [SerializeField] float bigTime;
     [SerializeField] float bigTimeLeft;
     [SerializeField] float bigModeBoost;
-
+    [SerializeField] Vector2 bigModeInitialBoost;
+ 
     // Start is called before the first frame update
     void Start()
     {
@@ -79,6 +80,7 @@ public class PlayerModeManager : MonoBehaviour
         if (grapplingGun.grappleRope.enabled) grapplingGun.grappleRope.enabled = false;
         pillbug.SetActive(false);
         isBigMode = true;
+        bigModeRigidbody.AddForce(bigModeInitialBoost, ForceMode2D.Impulse);
     }
 
     void EndBigMode()
