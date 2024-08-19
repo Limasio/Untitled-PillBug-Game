@@ -2879,13 +2879,13 @@ MonoBehaviour:
   player: {fileID: 1027186433}
   numberOfObjects: 50
   recycleOffset: 400
-  startPosition: {x: 25, y: 10}
+  startPosition: {x: 25, y: 15}
   minSize: {x: 1, y: 1}
   maxSize: {x: 1, y: 1}
   minGap: {x: 20, y: -1.5}
   maxGap: {x: 25, y: 1.5}
-  minY: 5
-  maxY: 15
+  minY: 10
+  maxY: 20
 --- !u!4 &2095206052
 Transform:
   m_ObjectHideFlags: 0
