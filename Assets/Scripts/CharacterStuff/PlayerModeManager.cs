@@ -25,6 +25,7 @@ public class PlayerModeManager : MonoBehaviour
     [SerializeField] Vector2 bigModeInitialBoost;
     [SerializeField] float bigModeInitialRotate;
     [SerializeField] Slider bigChargeSlider;
+    [SerializeField] Goarrow ArrowScript;
     private bool endingBigMode;
     private bool gameStarted;
     [SerializeField] Image sliderImage;
@@ -57,12 +58,16 @@ public class PlayerModeManager : MonoBehaviour
                     EndBigMode();
                 }
             }
-            else if (Input.GetKeyDown("space") && bigCharges > 0)
+            else if (Input.GetKeyDown("space") && bigCharges > 0 && pillbug.transform.position.x > 212)
             {
                 bigTimeLeft = bigTime;
                 bigCharges--;
                 // bigChargeSlider.value = bigCharges;
                 ActivateBigMode();
+            }
+            else if (Input.GetKeyDown("space") && bigCharges > 0 && pillbug.transform.position.x < 212)
+            {
+                ArrowScript.flashArrow();
             }
             else if (bigCharges < bigChargeMax)
             {
