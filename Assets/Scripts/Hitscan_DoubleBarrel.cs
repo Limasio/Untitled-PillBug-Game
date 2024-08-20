@@ -12,6 +12,8 @@ public class Hitscan_DoubleBarrel : MonoBehaviour
 
     [Header("Player:")]
     public Transform gunHolderDB;
+    [SerializeField] GameObject MuzzleFlash;
+    [SerializeField] float delay;
 
     [Header("Physics Stuff:")]
     public Rigidbody2D m_rigidbody;
@@ -24,6 +26,7 @@ public class Hitscan_DoubleBarrel : MonoBehaviour
     [SerializeField] PlayerModeManager moder;
     [SerializeField] GameObject music;
     [SerializeField] Hitscan_GrapplingGun grapplingGun;
+    [SerializeField] GameObject DestructionPrefab;
 
     // Start is called before the first frame update
     void Start()
@@ -39,6 +42,7 @@ public class Hitscan_DoubleBarrel : MonoBehaviour
 
     public void Shoot()
     {
+        StartCoroutine(MFlash(delay, MuzzleFlash));
         m_rigidbody.AddForce(((Vector2)gunHolderDB.position - mousePos).normalized * shotgunForce);
         // Debug.Log("gun: " + (Vector2)gunHolderDB.position);
         // Debug.Log("mouse: " + mousePos);
@@ -51,6 +55,7 @@ public class Hitscan_DoubleBarrel : MonoBehaviour
             if (target.layer == 7 || target.layer == 10)
             {
                 // Debug.Log("shot " + target);
+                Instantiate(DestructionPrefab, target.gameObject.transform.position, Quaternion.identity);
                 Destroy(target);
                 if (grapplingGun.grappleRope.enabled) grapplingGun.grappleRope.enabled = false;
             }
@@ -58,6 +63,7 @@ public class Hitscan_DoubleBarrel : MonoBehaviour
             {
                 // Debug.Log("shot " + target);
                 timer.AddTime();
+                Instantiate(DestructionPrefab, target.gameObject.transform.position, Quaternion.identity);
                 Destroy(target);
                 if (grapplingGun.grappleRope.enabled) grapplingGun.grappleRope.enabled = false;
             }
@@ -67,9 +73,19 @@ public class Hitscan_DoubleBarrel : MonoBehaviour
                 scorer.StartScore();
                 moder.StartGame();
                 music.SetActive(true);
+                Instantiate(DestructionPrefab, target.gameObject.transform.position, Quaternion.identity);
                 Destroy(target);
                 if (grapplingGun.grappleRope.enabled) grapplingGun.grappleRope.enabled = false;
             }
         }
+    }
+
+    IEnumerator MFlash(float delay, GameObject MuzzleFlash)
+    {
+        //isCoroutineRunning = true;
+        MuzzleFlash.SetActive(true);
+        yield return new WaitForSeconds(delay);
+        MuzzleFlash.SetActive(false);
+        //isCoroutineRunning = false;
     }
 }

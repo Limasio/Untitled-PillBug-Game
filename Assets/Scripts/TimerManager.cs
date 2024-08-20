@@ -12,6 +12,8 @@ public class TimerManager : MonoBehaviour
     [SerializeField] float timeBonus;
     [SerializeField] ScoreManager scoreManager;
 
+    [SerializeField] GameObject GameOverPanel;
+
     public bool hasTimerStarted;
 
     [Header("Time Bonuses For Distance Traveled")]
@@ -102,7 +104,9 @@ public class TimerManager : MonoBehaviour
         hasTimerStarted = false;
         scoreManager.ScoreCheck();
         music.SetActive(false);
+        GameOverPanel.SetActive(true);
+        Time.timeScale = 0f;
         // SceneManager.LoadScene(SceneManager.GetActiveScene().name);
-        SceneManager.LoadScene(sceneName:"MainMenu");
+        //SceneManager.LoadScene(sceneName:"MainMenu");
     }
 }

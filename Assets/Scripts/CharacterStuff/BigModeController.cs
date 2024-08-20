@@ -22,11 +22,15 @@ public class BigModeController : MonoBehaviour
     [SerializeField] Vector2 persistentBoost;
     [SerializeField] TimerManager timer;
     [SerializeField] GameObject background;
+    [SerializeField] GameObject DestructionPrefab;
+    [SerializeField] AudioClip explode;
+    AudioSource audioSource;
+    
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        audioSource = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -97,18 +101,24 @@ public class BigModeController : MonoBehaviour
         if (collision.gameObject.layer != 9 && collision.gameObject.layer != 3 && collision.gameObject.layer != 8)
         {
             Debug.Log("rolled over: " + collision.gameObject);
+            Instantiate(DestructionPrefab, collision.gameObject.transform.position, Quaternion.identity);
+            audioSource.PlayOneShot(explode, 0.5f);
             Destroy(collision.gameObject);
         }
         else if (collision.gameObject.layer == 8)
         {
             Debug.Log("Destroyed Timer");
             timer.AddTime();
+            Instantiate(DestructionPrefab, collision.gameObject.transform.position, Quaternion.identity);
+            audioSource.PlayOneShot(explode, 0.5f);
             Destroy(collision.gameObject);
         }
     }
 
     void OnTriggerEnter2D(Collider2D other)
     {
+        Instantiate(DestructionPrefab, other.gameObject.transform.position, Quaternion.identity);
+        audioSource.PlayOneShot(explode, 0.5f);
         Destroy(other.gameObject);
     }
 

@@ -6,6 +6,10 @@ using UnityEngine;
 public class ScoreManager : MonoBehaviour
 {
     [SerializeField] TMP_Text scoreText;
+
+    [SerializeField] TMP_Text gameOverScoreText;
+    [SerializeField] TMP_Text gameOverHighScoreText;
+
     public bool IsGameInPlay;
 
     private float currentScoreFloat;
@@ -48,10 +52,16 @@ public class ScoreManager : MonoBehaviour
 
     public void ScoreCheck()
     {
+        gameOverScoreText.text = ("Score: " + currentScore.ToString());
+
+
         if (currentScore > highScore)
         {
+            highScore = currentScore;
             PlayerPrefs.SetInt("highscore", currentScore);
             Debug.Log("new high score: " + currentScore);
         }
+
+        gameOverHighScoreText.text = ("High Score: " + highScore.ToString());
     }
 }
