@@ -20,6 +20,7 @@ public class TimerManager : MonoBehaviour
     [SerializeField] float timeBonus1min30sec;
     [SerializeField] float timeBonus3min;
     [SerializeField] float timeBonus5min;
+    [SerializeField] GameObject music;
 
     // Start is called before the first frame update
     void Start()
@@ -55,45 +56,53 @@ public class TimerManager : MonoBehaviour
 
     public void AddTime()
     {
-        //I should be using a case statment but I'm not sorrrry colbyyyyy
-        if(scoreManager.currentScore < 45)
+        if (hasTimerStarted)
         {
-            timeLeft += timeBonusInitial;
+            //I should be using a case statment but I'm not sorrrry colbyyyyy
+            if(scoreManager.currentScore < 45)
+            {
+                timeLeft += timeBonusInitial;
+            }
+            else if(scoreManager.currentScore < 105)
+            {
+                timeLeft += timeBonus45sec;
+            }
+            else if(scoreManager.currentScore < 180)
+            {
+                timeLeft += timeBonus1min30sec;
+            }
+            else if(scoreManager.currentScore < 300)
+            {
+                timeLeft += timeBonus3min;
+            }
+            else
+            {
+                timeLeft += timeBonus5min;
+            }
+            //timeLeft += timeBonus;
+            int min = Mathf.FloorToInt(timeLeft / 60);
+            int sec = Mathf.FloorToInt(timeLeft % 60);
+            timerText.text = string.Format("{0:00}:{1:00}", min, sec);
         }
-        else if(scoreManager.currentScore < 105)
-        {
-            timeLeft += timeBonus45sec;
-        }
-        else if(scoreManager.currentScore < 180)
-        {
-            timeLeft += timeBonus1min30sec;
-        }
-        else if(scoreManager.currentScore < 300)
-        {
-            timeLeft += timeBonus3min;
-        }
-        else
-        {
-            timeLeft += timeBonus5min;
-        }
-        //timeLeft += timeBonus;
-        int min = Mathf.FloorToInt(timeLeft / 60);
-        int sec = Mathf.FloorToInt(timeLeft % 60);
-        timerText.text = string.Format("{0:00}:{1:00}", min, sec);
     }
 
     public void LoseTime(float timeLoss)
     {
-        timeLeft -= timeLoss;
-        int min = Mathf.FloorToInt(timeLeft / 60);
-        int sec = Mathf.FloorToInt(timeLeft % 60);
-        timerText.text = string.Format("{0:00}:{1:00}", min, sec);
+        if (hasTimerStarted)
+        {
+            timeLeft -= timeLoss;
+            int min = Mathf.FloorToInt(timeLeft / 60);
+            int sec = Mathf.FloorToInt(timeLeft % 60);
+            timerText.text = string.Format("{0:00}:{1:00}", min, sec);
+        }
     }
 
     void GameOver()
     {
         hasTimerStarted = false;
         scoreManager.ScoreCheck();
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        music.SetActive(false);
+        // SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        SceneManager.LoadScene(sceneName:"MainMenu");
     }
 }

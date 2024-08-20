@@ -23,6 +23,7 @@ public class PlayerModeManager : MonoBehaviour
     [SerializeField] float bigTimeLeft;
     [SerializeField] float bigModeBoost;
     [SerializeField] Vector2 bigModeInitialBoost;
+    [SerializeField] float bigModeInitialRotate;
     [SerializeField] Slider bigChargeSlider;
     private bool endingBigMode;
     private bool gameStarted;
@@ -85,13 +86,16 @@ public class PlayerModeManager : MonoBehaviour
     {
         bigMode.SetActive(true);
         bigMode.transform.position = pillbug.transform.position;
-        bigModeRigidbody.velocity = pillbugRigidbody.velocity * bigModeBoost;
-        bigModeRigidbody.angularVelocity = pillbugRigidbody.angularVelocity;
+        // bigModeRigidbody.velocity = pillbugRigidbody.velocity * bigModeBoost;
+        // bigModeRigidbody.angularVelocity = pillbugRigidbody.angularVelocity;
+        bigModeRigidbody.velocity = new Vector3(0f, 0f, 0f);
+        bigModeRigidbody.angularVelocity = 0f;
         camera.Follow = bigMode.transform;
         if (grapplingGun.grappleRope.enabled) grapplingGun.grappleRope.enabled = false;
         pillbug.SetActive(false);
         isBigMode = true;
         bigModeRigidbody.AddForce(bigModeInitialBoost, ForceMode2D.Impulse);
+        bigModeRigidbody.AddTorque(bigModeInitialRotate, ForceMode2D.Impulse);
         endingBigMode = false;
     }
 

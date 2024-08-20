@@ -22,6 +22,7 @@ public class Hitscan_DoubleBarrel : MonoBehaviour
     [SerializeField] float gunDistance;
     [SerializeField] ScoreManager scorer;
     [SerializeField] PlayerModeManager moder;
+    [SerializeField] GameObject music;
 
     // Start is called before the first frame update
     void Start()
@@ -62,6 +63,7 @@ public class Hitscan_DoubleBarrel : MonoBehaviour
                 timer.StartTime();
                 scorer.StartScore();
                 moder.StartGame();
+                music.SetActive(true);
                 Destroy(target);
             }
         }
