@@ -223,7 +223,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7250007481676320966, guid: 810a54e4a10b1b744b35e4c71774935f, type: 3}
       propertyPath: m_SortingLayer
-      value: -1
+      value: -2
       objectReference: {fileID: 0}
     - target: {fileID: 7250007481676320966, guid: 810a54e4a10b1b744b35e4c71774935f, type: 3}
       propertyPath: m_SortingLayerID
@@ -235,7 +235,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7684488474572335608, guid: 810a54e4a10b1b744b35e4c71774935f, type: 3}
       propertyPath: firingRate
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -309,7 +309,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7250007481676320966, guid: 810a54e4a10b1b744b35e4c71774935f, type: 3}
       propertyPath: m_SortingLayer
-      value: -1
+      value: -2
       objectReference: {fileID: 0}
     - target: {fileID: 7250007481676320966, guid: 810a54e4a10b1b744b35e4c71774935f, type: 3}
       propertyPath: m_SortingLayerID
@@ -321,7 +321,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7684488474572335608, guid: 810a54e4a10b1b744b35e4c71774935f, type: 3}
       propertyPath: firingRate
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -395,7 +395,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7250007481676320966, guid: 810a54e4a10b1b744b35e4c71774935f, type: 3}
       propertyPath: m_SortingLayer
-      value: -1
+      value: -2
       objectReference: {fileID: 0}
     - target: {fileID: 7250007481676320966, guid: 810a54e4a10b1b744b35e4c71774935f, type: 3}
       propertyPath: m_SortingLayerID
@@ -407,7 +407,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7684488474572335608, guid: 810a54e4a10b1b744b35e4c71774935f, type: 3}
       propertyPath: firingRate
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
