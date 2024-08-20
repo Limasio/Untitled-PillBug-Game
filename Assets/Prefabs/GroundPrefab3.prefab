@@ -79,9 +79,9 @@ SpriteShapeRenderer:
   m_SortingOrder: 0
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_MaskInteraction: 0
-  m_ShapeTexture: {fileID: 2800000, guid: b281b91a70a624a0da1c43adc1c30c7b, type: 3}
+  m_ShapeTexture: {fileID: 2800000, guid: 826d8e812fb2426448438188db1de4f0, type: 3}
   m_Sprites:
-  - {fileID: 21300000, guid: 6e7a0daf4dc2a164a816b3d7875373a6, type: 3}
+  - {fileID: 21300000, guid: f3762221d21451a45b5d8909be2f0cf1, type: 3}
   - {fileID: 21300000, guid: 608e61deb05c54660bebf5a4dd2ee02d, type: 3}
   - {fileID: 21300000, guid: 608e61deb05c54660bebf5a4dd2ee02d, type: 3}
   - {fileID: 21300000, guid: 608e61deb05c54660bebf5a4dd2ee02d, type: 3}
@@ -91,8 +91,8 @@ SpriteShapeRenderer:
   - {fileID: 21300000, guid: 608e61deb05c54660bebf5a4dd2ee02d, type: 3}
   - {fileID: 21300000, guid: 608e61deb05c54660bebf5a4dd2ee02d, type: 3}
   m_LocalAABB:
-    m_Center: {x: 24.987713, y: -24.999565, z: 0}
-    m_Extent: {x: 25.33261, y: 25.320442, z: 0}
+    m_Center: {x: 24.987629, y: -24.250912, z: 0}
+    m_Extent: {x: 25.013086, y: 25.749096, z: 0}
   m_SpriteSortPoint: 0
 --- !u!114 &3519023043262509370
 MonoBehaviour:
@@ -142,7 +142,7 @@ MonoBehaviour:
       corner: 1
       m_CornerMode: 1
   m_SpriteShape: {fileID: 11400000, guid: 846392c8828908d43b7d108c2c1f4ac0, type: 2}
-  m_FillPixelPerUnit: 256
+  m_FillPixelPerUnit: 21
   m_StretchTiling: 1
   m_SplineDetail: 16
   m_AdaptiveUV: 1
@@ -158,14 +158,11 @@ MonoBehaviour:
   m_Creator: {fileID: 0}
   m_Modifiers: []
   m_ColliderSegment:
-  - {x: -0.02409824, y: -0.024078127}
-  - {x: 49.362022, y: -0.00038057822}
-  - {x: 49.99936, y: -0.0006405439}
-  - {x: 49.99936, y: -49.749996}
-  - {x: 49.999496, y: -49.999504}
-  - {x: 0.24987793, y: -49.99936}
-  - {x: 0.00050091825, y: -49.999496}
-  - {x: -0.02409824, y: -0.024078127}
+  - {x: -0.024736002, y: -0.028818596}
+  - {x: 49.999996, y: -0.004814614}
+  - {x: 50, y: -50}
+  - {x: 0, y: -50}
+  - {x: -0.024736002, y: -0.028818596}
 --- !u!50 &1741179107507970665
 Rigidbody2D:
   serializedVersion: 4
@@ -225,7 +222,7 @@ PolygonCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0.36}
+  m_Offset: {x: 0, y: 1.5}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -237,12 +234,9 @@ PolygonCollider2D:
   m_AutoTiling: 0
   m_Points:
     m_Paths:
-    - - {x: -0.02409824, y: -0.024078127}
-      - {x: 49.362022, y: -0.00038057822}
-      - {x: 49.99936, y: -0.0006405439}
-      - {x: 49.99936, y: -49.749996}
-      - {x: 49.999496, y: -49.999504}
-      - {x: 0.24987793, y: -49.99936}
-      - {x: 0.00050091825, y: -49.999496}
-      - {x: -0.02409824, y: -0.024078127}
+    - - {x: -0.024736002, y: -0.028818596}
+      - {x: 49.999996, y: -0.004814614}
+      - {x: 50, y: -50}
+      - {x: 0, y: -50}
+      - {x: -0.024736002, y: -0.028818596}
   m_UseDelaunayMesh: 0

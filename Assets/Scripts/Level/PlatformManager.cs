@@ -123,7 +123,8 @@ public class PlatformManager : MonoBehaviour
 
     private void Recycle2()
     {
-        objectQueue.Dequeue();
+        GameObject o = objectQueue.Dequeue();
+        Destroy(o);
 
         Vector2 scale = new Vector2(Random.Range(minSize.x, maxSize.x), Random.Range(minSize.y, maxSize.y));
         Vector2 position = nextPosition;
