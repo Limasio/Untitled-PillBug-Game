@@ -2612,7 +2612,8 @@ MonoBehaviour:
   camera: {fileID: 113172042}
   cameraMax: 18
   cameraXMax: 0.1
-  persistentBoost: {x: 10000, y: 500}
+  persistentBoost: {x: 2000, y: 1000}
+  timer: {fileID: 825929992}
 --- !u!95 &620767998
 Animator:
   serializedVersion: 5
@@ -5119,3 +5120,4 @@ SceneRoots:
   - {fileID: 514889904}
   - {fileID: 590237373}
   - {fileID: 278129603}
+  - {fileID: 553250259}
