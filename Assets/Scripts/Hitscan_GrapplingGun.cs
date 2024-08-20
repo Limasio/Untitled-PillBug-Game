@@ -155,7 +155,7 @@ public class Hitscan_GrapplingGun : MonoBehaviour
     {
         yield return new WaitForFixedUpdate();
         m_rigidbody.AddForce((grapplePoint - (Vector2)gunHolder.position).normalized * grappleForce);
-        yield break;
+        //yield break;
     }
 
     private void OnDrawGizmosSelected()

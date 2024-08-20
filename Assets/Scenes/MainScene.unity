@@ -7695,7 +7695,7 @@ MonoBehaviour:
   grappleRope: {fileID: 1865419947}
   grappleToAll: 0
   grappableLayerNumber: 0
-  grappleForce: 30
+  grappleForce: 40
   m_camera: {fileID: 519420031}
   gunHolder: {fileID: 1027186435}
   gunPivot: {fileID: 307558495}
@@ -9602,7 +9602,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6162414481889795409, guid: 818502020a07cdd45afbb7b111dfe4bf, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 4.05
+      value: 1.49
       objectReference: {fileID: 0}
     - target: {fileID: 6162414481889795409, guid: 818502020a07cdd45afbb7b111dfe4bf, type: 3}
       propertyPath: m_LocalPosition.z
