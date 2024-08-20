@@ -21,6 +21,7 @@ public class BigModeController : MonoBehaviour
     [SerializeField] float cameraXMax;
     [SerializeField] Vector2 persistentBoost;
     [SerializeField] TimerManager timer;
+    [SerializeField] GameObject background;
 
     // Start is called before the first frame update
     void Start()
@@ -49,6 +50,7 @@ public class BigModeController : MonoBehaviour
     IEnumerator Grow()
     {
         Vector3 initialSize = transform.localScale;
+        Vector3 initialBackgroundSize = background.transform.localScale;
         float initialCam = camera.m_Lens.OrthographicSize;
         CinemachineFramingTransposer transposer = camera.GetCinemachineComponent<CinemachineFramingTransposer>();
         float initialCamX = transposer.m_ScreenX;
@@ -56,6 +58,7 @@ public class BigModeController : MonoBehaviour
         {
             growTimeCounter += Time.deltaTime;
             transform.localScale = Vector3.Lerp(initialSize, new Vector3(growSize, growSize, growSize), growTimeCounter / growTime);
+            background.transform.localScale = Vector3.Lerp(initialBackgroundSize, new Vector3(1.5f, 1.5f, 1.5f), growTimeCounter / growTime);
             camera.m_Lens.OrthographicSize = Mathf.Lerp(initialCam, cameraMax, growTimeCounter / growTime);
             transposer.m_ScreenX = Mathf.Lerp(initialCamX, cameraXMax, growTimeCounter / growTime);
             yield return null;
@@ -72,6 +75,7 @@ public class BigModeController : MonoBehaviour
     IEnumerator Shrink()
     {
         Vector3 initialSize = transform.localScale;
+        Vector3 initialBackgroundSize = background.transform.localScale;
         float initialCam = camera.m_Lens.OrthographicSize;
         CinemachineFramingTransposer transposer = camera.GetCinemachineComponent<CinemachineFramingTransposer>();
         float initialCamX = transposer.m_ScreenX;
@@ -79,6 +83,7 @@ public class BigModeController : MonoBehaviour
         {
             shrinkTimeCounter += Time.deltaTime;
             transform.localScale = Vector3.Lerp(initialSize, new Vector3(1.5f, 1.5f, 1.5f), shrinkTimeCounter / shrinkTime);
+            background.transform.localScale = Vector3.Lerp(initialBackgroundSize, new Vector3(1f, 1f, 1f), shrinkTimeCounter / shrinkTime);
             camera.m_Lens.OrthographicSize = Mathf.Lerp(initialCam, 12f, shrinkTimeCounter / shrinkTime);
             transposer.m_ScreenX = Mathf.Lerp(initialCamX, 0.5f, shrinkTimeCounter / shrinkTime);
             yield return null;
