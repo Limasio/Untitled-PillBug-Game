@@ -20,6 +20,7 @@ public class BigModeController : MonoBehaviour
     [SerializeField] float cameraMax;
     [SerializeField] float cameraXMax;
     [SerializeField] Vector2 persistentBoost;
+    [SerializeField] TimerManager timer;
 
     // Start is called before the first frame update
     void Start()
@@ -88,11 +89,22 @@ public class BigModeController : MonoBehaviour
     void OnCollisionEnter2D(Collision2D collision)
     {
         Debug.Log("collided with: " + collision.gameObject);
-        if (collision.gameObject.layer != 9 && collision.gameObject.layer != 3)
+        if (collision.gameObject.layer != 9 && collision.gameObject.layer != 3 && collision.gameObject.layer != 8)
         {
             Debug.Log("rolled over: " + collision.gameObject);
             Destroy(collision.gameObject);
         }
+        else if (collision.gameObject.layer == 8)
+        {
+            Debug.Log("Destroyed Timer");
+            timer.AddTime();
+            Destroy(collision.gameObject);
+        }
+    }
+
+    void OnTriggerEnter(Collider other)
+    {
+        Destroy(other.gameObject);
     }
 
     bool IsGrounded()
