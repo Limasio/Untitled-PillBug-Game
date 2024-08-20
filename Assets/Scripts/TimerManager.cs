@@ -76,6 +76,14 @@ public class TimerManager : MonoBehaviour
         timerText.text = string.Format("{0:00}:{1:00}", min, sec);
     }
 
+    public void LoseTime(float timeLoss)
+    {
+        timeLeft -= timeLoss;
+        int min = Mathf.FloorToInt(timeLeft / 60);
+        int sec = Mathf.FloorToInt(timeLeft % 60);
+        timerText.text = string.Format("{0:00}:{1:00}", min, sec);
+    }
+
     void GameOver()
     {
         hasTimerStarted = false;
