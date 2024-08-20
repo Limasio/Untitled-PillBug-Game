@@ -23,6 +23,7 @@ public class Hitscan_DoubleBarrel : MonoBehaviour
     [SerializeField] ScoreManager scorer;
     [SerializeField] PlayerModeManager moder;
     [SerializeField] GameObject music;
+    [SerializeField] Hitscan_GrapplingGun grapplingGun;
 
     // Start is called before the first frame update
     void Start()
@@ -51,12 +52,14 @@ public class Hitscan_DoubleBarrel : MonoBehaviour
             {
                 // Debug.Log("shot " + target);
                 Destroy(target);
+                if (grapplingGun.grappleRope.enabled) grapplingGun.grappleRope.enabled = false;
             }
             else if(target.layer == 8)
             {
                 // Debug.Log("shot " + target);
                 timer.AddTime();
                 Destroy(target);
+                if (grapplingGun.grappleRope.enabled) grapplingGun.grappleRope.enabled = false;
             }
             else if(target.layer == 11)
             {
@@ -65,6 +68,7 @@ public class Hitscan_DoubleBarrel : MonoBehaviour
                 moder.StartGame();
                 music.SetActive(true);
                 Destroy(target);
+                if (grapplingGun.grappleRope.enabled) grapplingGun.grappleRope.enabled = false;
             }
         }
     }

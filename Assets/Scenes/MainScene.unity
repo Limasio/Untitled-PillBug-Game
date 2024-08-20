@@ -982,6 +982,7 @@ MonoBehaviour:
   bigModeInitialBoost: {x: 20000, y: 40000}
   bigModeInitialRotate: -10000
   bigChargeSlider: {fileID: 289240748}
+  sliderImage: {fileID: 1252893310}
 --- !u!1 &405840863
 GameObject:
   m_ObjectHideFlags: 0
@@ -2556,7 +2557,7 @@ MonoBehaviour:
   camera: {fileID: 113172042}
   cameraMax: 18
   cameraXMax: 0.1
-  persistentBoost: {x: 2000, y: 1000}
+  persistentBoost: {x: 5000, y: 2000}
   timer: {fileID: 825929992}
 --- !u!95 &620767998
 Animator:
@@ -3217,7 +3218,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
+  - {fileID: 10301, guid: 0000000000000000f000000000000000, type: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -3618,6 +3619,7 @@ MonoBehaviour:
   scorer: {fileID: 1703275357}
   moder: {fileID: 381532783}
   music: {fileID: 1060326875}
+  grapplingGun: {fileID: 1438344778}
 --- !u!95 &1027186444
 Animator:
   serializedVersion: 5

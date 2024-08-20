@@ -27,6 +27,7 @@ public class PlayerModeManager : MonoBehaviour
     [SerializeField] Slider bigChargeSlider;
     private bool endingBigMode;
     private bool gameStarted;
+    [SerializeField] Image sliderImage;
  
     // Start is called before the first frame update
     void Start()
@@ -74,6 +75,10 @@ public class PlayerModeManager : MonoBehaviour
                     bigChargeTimeCounter = 0f;
                 }
             }
+            if (bigCharges > 0)
+            {
+                sliderImage.color = Color.yellow;
+            }
         }
     }
 
@@ -103,6 +108,7 @@ public class PlayerModeManager : MonoBehaviour
     {
         if (!endingBigMode) bigController.ShrinkDisable();
         endingBigMode = true;
+        sliderImage.color = Color.white;
     }
 
     public void SwapBack()
