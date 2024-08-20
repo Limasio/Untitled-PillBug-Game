@@ -10,12 +10,16 @@ public class ScoreManager : MonoBehaviour
 
     private float currentScoreFloat;
     public int currentScore;
+
+    private int highScore;
     
     // Start is called before the first frame update
     void Awake()
     {
         currentScoreFloat = 0;
         IsGameInPlay = false;
+        highScore = PlayerPrefs.GetInt("highscore", 0);
+        Debug.Log("initial high score: " + highScore);
     }
 
     // Update is called once per frame
@@ -24,16 +28,30 @@ public class ScoreManager : MonoBehaviour
         if (IsGameInPlay)
         {
             currentScoreFloat += Time.deltaTime;
-            currentScore = (int)currentScoreFloat;
-            Debug.Log("Adding Score");
+            currentScore = (int)(currentScoreFloat * 200);
+            // Debug.Log("Adding Score");
         }
 
         //scoreText.text = string.Format("Score: ", currentScore);
-        scoreText.text = string.Format(currentScore.ToString());
+        scoreText.text = string.Format("{0:0000000}", currentScore);
+    }
+
+    public void StartScore()
+    {
+        IsGameInPlay = true;
     }
 
     public void AddScore(int score)
     {
         currentScore = currentScore + score;
+    }
+
+    public void ScoreCheck()
+    {
+        if (currentScore > highScore)
+        {
+            PlayerPrefs.SetInt("highscore", currentScore);
+            Debug.Log("new high score: " + currentScore);
+        }
     }
 }

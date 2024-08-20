@@ -25,6 +25,7 @@ public class PlayerModeManager : MonoBehaviour
     [SerializeField] Vector2 bigModeInitialBoost;
     [SerializeField] Slider bigChargeSlider;
     private bool endingBigMode;
+    private bool gameStarted;
  
     // Start is called before the first frame update
     void Start()
@@ -34,40 +35,50 @@ public class PlayerModeManager : MonoBehaviour
         bigModeRigidbody = bigMode.GetComponent<Rigidbody2D>();
         camera = cameraObject.GetComponent<CinemachineVirtualCamera>();
         bigChargeSlider.value = bigCharges;
+        gameStarted = false;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (isBigMode)
+        if (gameStarted)
         {
-            if (bigTimeLeft > 0f)
+            if (isBigMode)
             {
-                bigTimeLeft -= Time.deltaTime;
+                if (bigTimeLeft > 0f)
+                {
+                    bigTimeLeft -= Time.deltaTime;
+                    bigChargeSlider.value = bigTimeLeft / bigTime;
+                }
+                else 
+                {
+                    EndBigMode();
+                }
             }
-            else 
+            else if (Input.GetKeyDown("space") && bigCharges > 0)
             {
-                EndBigMode();
-            }
-        }
-        else if (Input.GetKeyDown("space") && bigCharges > 0)
-        {
-            bigTimeLeft = bigTime;
-            bigCharges--;
-            bigChargeSlider.value = bigCharges;
-            ActivateBigMode();
-        }
-        else if (bigCharges < bigChargeMax)
-        {
-            bigChargeTimeCounter += Time.deltaTime;
-            bigChargeSlider.value = bigChargeTimeCounter / bigChargeTime;
-            if (bigChargeTimeCounter >= bigChargeTime)
-            {
-                bigCharges++;
+                bigTimeLeft = bigTime;
+                bigCharges--;
                 // bigChargeSlider.value = bigCharges;
-                bigChargeTimeCounter = 0f;
+                ActivateBigMode();
+            }
+            else if (bigCharges < bigChargeMax)
+            {
+                bigChargeTimeCounter += Time.deltaTime;
+                bigChargeSlider.value = bigChargeTimeCounter / bigChargeTime;
+                if (bigChargeTimeCounter >= bigChargeTime)
+                {
+                    bigCharges++;
+                    // bigChargeSlider.value = bigCharges;
+                    bigChargeTimeCounter = 0f;
+                }
             }
         }
+    }
+
+    public void StartGame()
+    {
+        gameStarted = true;
     }
 
     void ActivateBigMode()

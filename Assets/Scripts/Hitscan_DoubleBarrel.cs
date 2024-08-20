@@ -20,6 +20,8 @@ public class Hitscan_DoubleBarrel : MonoBehaviour
     [SerializeField] TimerManager timer;
     [SerializeField] LayerMask targetLayers;
     [SerializeField] float gunDistance;
+    [SerializeField] ScoreManager scorer;
+    [SerializeField] PlayerModeManager moder;
 
     // Start is called before the first frame update
     void Start()
@@ -44,7 +46,7 @@ public class Hitscan_DoubleBarrel : MonoBehaviour
         {
             GameObject target = hit.collider.gameObject;
             // Debug.Log("hit: " + target);
-            if (target.layer == 7)
+            if (target.layer == 7 || target.layer == 10)
             {
                 // Debug.Log("shot " + target);
                 Destroy(target);
@@ -53,6 +55,13 @@ public class Hitscan_DoubleBarrel : MonoBehaviour
             {
                 // Debug.Log("shot " + target);
                 timer.AddTime();
+                Destroy(target);
+            }
+            else if(target.layer == 11)
+            {
+                timer.StartTime();
+                scorer.StartScore();
+                moder.StartGame();
                 Destroy(target);
             }
         }

@@ -25,6 +25,7 @@ public class TimerManager : MonoBehaviour
     void Start()
     {
         timeLeft = timeStart;
+        hasTimerStarted = false;
     }
 
     // Update is called once per frame
@@ -45,6 +46,11 @@ public class TimerManager : MonoBehaviour
             }
         }
         
+    }
+
+    public void StartTime()
+    {
+        hasTimerStarted = true;
     }
 
     public void AddTime()
@@ -87,6 +93,7 @@ public class TimerManager : MonoBehaviour
     void GameOver()
     {
         hasTimerStarted = false;
+        scoreManager.ScoreCheck();
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 }
