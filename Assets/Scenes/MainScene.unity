@@ -913,7 +913,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cam: {fileID: 113172041}
-  parallaxEffect: 0.5
+  parallaxEffect: 0.75
   camera: {fileID: 0}
 --- !u!1 &171830348
 GameObject:
@@ -5049,7 +5049,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cam: {fileID: 113172041}
-  parallaxEffect: 1
+  parallaxEffect: 0.95
   camera: {fileID: 0}
 --- !u!1 &781267945
 GameObject:
@@ -7715,7 +7715,7 @@ MonoBehaviour:
   grappleDistanceVector: {x: 0, y: 0}
   targetLayers:
     serializedVersion: 2
-    m_Bits: 2433
+    m_Bits: 3969
 --- !u!95 &1438344779
 Animator:
   serializedVersion: 5
