@@ -8,6 +8,7 @@ public class GameManagingScript : MonoBehaviour
 {
     public GameObject pauseScreen;
     [SerializeField] private PauseMenu pauseMenu;
+    [SerializeField] ScoreManager scoreManager;
 
     public bool gameIsPaused;
 
@@ -47,6 +48,7 @@ public class GameManagingScript : MonoBehaviour
 
     public void QuitGame()
     {
+        scoreManager.ScoreCheck();
         Time.timeScale = 1f;
         pauseScreen.SetActive(false);
         SceneManager.LoadScene("MainMenu");

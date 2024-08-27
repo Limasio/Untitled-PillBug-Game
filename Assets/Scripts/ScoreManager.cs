@@ -33,11 +33,12 @@ public class ScoreManager : MonoBehaviour
         {
             currentScoreFloat += Time.deltaTime;
             currentScore = (int)(currentScoreFloat * 200);
+            scoreText.text = string.Format("{0:0000000}", currentScore);
             // Debug.Log("Adding Score");
         }
 
         //scoreText.text = string.Format("Score: ", currentScore);
-        scoreText.text = string.Format("{0:0000000}", currentScore);
+        
     }
 
     public void StartScore()
@@ -52,6 +53,7 @@ public class ScoreManager : MonoBehaviour
 
     public void ScoreCheck()
     {
+        IsGameInPlay = false;
         gameOverScoreText.text = ("Score: " + currentScore.ToString());
 
 
