@@ -8,15 +8,18 @@ public class PauseMenu : MonoBehaviour
 {
     public GameObject pauseMenuGO;
     public bool gameIsPaused = false;
-    public AudioMixer audioMixer;
+    public AudioMixer audioMixerM;
+    public AudioMixer audioMixerSFX;
 
-    
 
-    string volumeMain = "Volume";
+
+    string volumeMusic = "VolumeMusic";
+    string volumeSFX = "VolumeSFX";
 
     private void Awake()
     {
-        pauseMenuGO.transform.GetChild(1).transform.GetChild(2).transform.GetChild(1).GetComponent<Slider>().value = PlayerPrefs.GetFloat(volumeMain);
+        pauseMenuGO.transform.GetChild(1).transform.GetChild(2).transform.GetChild(1).GetComponent<Slider>().value = PlayerPrefs.GetFloat(volumeMusic);
+        pauseMenuGO.transform.GetChild(1).transform.GetChild(3).transform.GetChild(1).GetComponent<Slider>().value = PlayerPrefs.GetFloat(volumeSFX);
     }
 
     // Start is called before the first frame update
@@ -57,10 +60,17 @@ public class PauseMenu : MonoBehaviour
         pauseMenuGO.SetActive(false);
     }
 
-    public void SetVolume(float volume)
+    public void SetMusicVolume(float volume)
     {
-        audioMixer.SetFloat("Volume", volume);
-        PlayerPrefs.SetFloat(volumeMain, volume);
+        audioMixerM.SetFloat("VolumeMusic", volume);
+        PlayerPrefs.SetFloat(volumeMusic, volume);
+        PlayerPrefs.Save();
+    }
+
+    public void SetSFXVolume(float volume)
+    {
+        audioMixerSFX.SetFloat("VolumeSFX", volume);
+        PlayerPrefs.SetFloat(volumeSFX, volume);
         PlayerPrefs.Save();
     }
 }

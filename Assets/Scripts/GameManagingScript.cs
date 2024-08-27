@@ -11,7 +11,8 @@ public class GameManagingScript : MonoBehaviour
 
     public bool gameIsPaused;
 
-    public AudioMixer mainAudioMixer;
+    public AudioMixer SFXAudioMixer;
+    public AudioMixer MusicAudioMixer;
 
     private void Awake()
     {
@@ -22,7 +23,8 @@ public class GameManagingScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        mainAudioMixer.SetFloat("Volume", PlayerPrefs.GetFloat("Volume"));
+        SFXAudioMixer.SetFloat("VolumeSFX", PlayerPrefs.GetFloat("VolumeSFX"));
+        MusicAudioMixer.SetFloat("VolumeMusic", PlayerPrefs.GetFloat("VolumeMusic"));
     }
 
     // Update is called once per frame
