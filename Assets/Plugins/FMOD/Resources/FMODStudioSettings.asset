@@ -755,8 +755,8 @@ MonoBehaviour:
   switchSettingsMigration: 1
   HasSourceProject: 1
   HasPlatforms: 1
-  sourceProjectPath: ../Desktop/Untitled Pillbug Game/Audio/pillbugrollout/pillbugrollout.fspro
-  sourceBankPath: ../Desktop/Untitled Pillbug Game/Audio/pillbugrollout/Build
+  sourceProjectPath: ../Desktop/Pillbug Rollout/Audio/pillbugrollout/pillbugrollout.fspro
+  sourceBankPath: ../Desktop/Pillbug Rollout/Audio/pillbugrollout/Build
   sourceBankPathUnformatted: 
   BankRefreshCooldown: 5
   ShowBankRefreshWindow: 1
