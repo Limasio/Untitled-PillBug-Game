@@ -141,7 +141,8 @@ public class Hitscan_GrapplingGun : MonoBehaviour
                     grapplePoint = _hit.point;
                     grappleDistanceVector = grapplePoint - (Vector2)gunPivot.position;
                     grappleRope.enabled = true;
-                }
+                    AudioManager.instance.PlayOneShot(FMODEvents.instance.grapple, this.transform.position);
+            }
         }
     }
 

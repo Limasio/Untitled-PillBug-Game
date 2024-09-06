@@ -24,13 +24,13 @@ public class BigModeController : MonoBehaviour
     [SerializeField] GameObject background;
     [SerializeField] GameObject DestructionPrefab;
     [SerializeField] AudioClip explode;
-    AudioSource audioSource;
-    
+    //AudioSource audioSource;
+
 
     // Start is called before the first frame update
     void Start()
     {
-        audioSource = GetComponent<AudioSource>();
+        //audioSource = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -102,7 +102,8 @@ public class BigModeController : MonoBehaviour
         {
             Debug.Log("rolled over: " + collision.gameObject);
             Instantiate(DestructionPrefab, collision.gameObject.transform.position, Quaternion.identity);
-            audioSource.PlayOneShot(explode, 0.5f);
+            //audioSource.PlayOneShot(explode, 0.5f);
+            AudioManager.instance.PlayOneShot(FMODEvents.instance.explosion, this.transform.position);
             Destroy(collision.gameObject);
         }
         else if (collision.gameObject.layer == 8)
@@ -110,7 +111,7 @@ public class BigModeController : MonoBehaviour
             Debug.Log("Destroyed Timer");
             timer.AddTime();
             Instantiate(DestructionPrefab, collision.gameObject.transform.position, Quaternion.identity);
-            audioSource.PlayOneShot(explode, 0.5f);
+            AudioManager.instance.PlayOneShot(FMODEvents.instance.explosion, this.transform.position);
             Destroy(collision.gameObject);
         }
     }
@@ -118,7 +119,7 @@ public class BigModeController : MonoBehaviour
     void OnTriggerEnter2D(Collider2D other)
     {
         Instantiate(DestructionPrefab, other.gameObject.transform.position, Quaternion.identity);
-        audioSource.PlayOneShot(explode, 0.5f);
+        AudioManager.instance.PlayOneShot(FMODEvents.instance.explosion, this.transform.position);
         Destroy(other.gameObject);
     }
 

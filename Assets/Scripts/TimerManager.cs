@@ -103,7 +103,7 @@ public class TimerManager : MonoBehaviour
     {
         hasTimerStarted = false;
         scoreManager.ScoreCheck();
-        music.SetActive(false);
+        AudioManager.instance.StopMusic();
         timerText.text = "00:00";
         GameOverPanel.SetActive(true);
         Time.timeScale = 0f;

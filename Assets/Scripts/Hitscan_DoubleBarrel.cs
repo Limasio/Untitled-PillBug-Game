@@ -19,12 +19,15 @@ public class Hitscan_DoubleBarrel : MonoBehaviour
     public Rigidbody2D m_rigidbody;
     [SerializeField] float shotgunForce;
 
+    [Header("Audio Stuff:")]
+    //[SerializeField] GameObject music;
+
     [SerializeField] TimerManager timer;
     [SerializeField] LayerMask targetLayers;
     [SerializeField] float gunDistance;
     [SerializeField] ScoreManager scorer;
     [SerializeField] PlayerModeManager moder;
-    [SerializeField] GameObject music;
+    
     [SerializeField] Hitscan_GrapplingGun grapplingGun;
     [SerializeField] GameObject DestructionPrefab;
 
@@ -42,6 +45,9 @@ public class Hitscan_DoubleBarrel : MonoBehaviour
 
     public void Shoot()
     {
+        //Play Shotgun Sound
+        AudioManager.instance.PlayOneShot(FMODEvents.instance.explosion, this.transform.position);
+        
         StartCoroutine(MFlash(delay, MuzzleFlash));
         m_rigidbody.AddForce(((Vector2)gunHolderDB.position - mousePos).normalized * shotgunForce);
         // Debug.Log("gun: " + (Vector2)gunHolderDB.position);
@@ -72,7 +78,7 @@ public class Hitscan_DoubleBarrel : MonoBehaviour
                 timer.StartTime();
                 scorer.StartScore();
                 moder.StartGame();
-                music.SetActive(true);
+                AudioManager.instance.InitializeMusic();
                 Instantiate(DestructionPrefab, target.gameObject.transform.position, Quaternion.identity);
                 Destroy(target);
                 if (grapplingGun.grappleRope.enabled) grapplingGun.grappleRope.enabled = false;
