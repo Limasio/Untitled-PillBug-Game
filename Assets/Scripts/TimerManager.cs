@@ -16,6 +16,9 @@ public class TimerManager : MonoBehaviour
 
     public bool hasTimerStarted;
 
+    public static TimerManager instance { get; private set; }
+    public bool hasGameEnded { get; private set; }
+
     [Header("Time Bonuses For Distance Traveled")]
     [SerializeField] float timeBonusInitial;
     [SerializeField] float timeBonus45sec;
@@ -24,11 +27,21 @@ public class TimerManager : MonoBehaviour
     [SerializeField] float timeBonus5min;
     [SerializeField] GameObject music;
 
+    private void Awake()
+    {
+        if (instance != null)
+        {
+            Debug.LogError("Found more than one Timer Manager in the scene.");
+        }
+        instance = this;
+    }
+
     // Start is called before the first frame update
     void Start()
     {
         timeLeft = timeStart;
         hasTimerStarted = false;
+        hasGameEnded = false;
     }
 
     // Update is called once per frame
@@ -101,6 +114,7 @@ public class TimerManager : MonoBehaviour
 
     void GameOver()
     {
+        hasGameEnded = true;
         hasTimerStarted = false;
         scoreManager.ScoreCheck();
         AudioManager.instance.StopMusic();

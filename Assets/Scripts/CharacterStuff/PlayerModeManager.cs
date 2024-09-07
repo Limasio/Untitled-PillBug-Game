@@ -44,7 +44,7 @@ public class PlayerModeManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (gameStarted)
+        if (gameStarted && TimerManager.instance.hasGameEnded == false && PauseMenu.instance.gameIsPaused == false)
         {
             if (isBigMode)
             {

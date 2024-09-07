@@ -63,11 +63,11 @@ public class Hitscan_GrapplingGun : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Mouse1))
+        if (Input.GetKeyDown(KeyCode.Mouse1) && TimerManager.instance.hasGameEnded == false && PauseMenu.instance.gameIsPaused == false)
         {
             SetGrapplePoint();
         }
-        else if (Input.GetKey(KeyCode.Mouse1))
+        else if (Input.GetKey(KeyCode.Mouse1) && TimerManager.instance.hasGameEnded == false && PauseMenu.instance.gameIsPaused == false)
         {
             if (grappleRope.enabled)
             {
@@ -89,13 +89,13 @@ public class Hitscan_GrapplingGun : MonoBehaviour
                 }
             }
         }
-        else if (Input.GetKeyUp(KeyCode.Mouse1))
+        else if (Input.GetKeyUp(KeyCode.Mouse1) && TimerManager.instance.hasGameEnded == false && PauseMenu.instance.gameIsPaused == false)
         {
             grappleRope.enabled = false;
             //m_springJoint2D.enabled = false;
             //m_rigidbody.gravityScale = 1;
         }
-        else
+        else if (TimerManager.instance.hasGameEnded == false && PauseMenu.instance.gameIsPaused == false)
         {
             Vector2 mousePos = m_camera.ScreenToWorldPoint(Input.mousePosition);
             RotateGun(mousePos, true);

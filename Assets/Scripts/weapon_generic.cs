@@ -57,6 +57,10 @@ public class weapon_generic : MonoBehaviour
     // Update is called once per frame
     void LateUpdate()
     {
+        if (TimerManager.instance.hasGameEnded == true || PauseMenu.instance.gameIsPaused == true)
+        {
+            return;
+        }
         if (Automatic)
         {
             if (Input.GetMouseButton(0))

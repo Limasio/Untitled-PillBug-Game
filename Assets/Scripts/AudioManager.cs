@@ -8,6 +8,20 @@ using UnityEngine.SceneManagement;
 
 public class AudioManager : MonoBehaviour
 {
+    [Header("Volume")]
+    [Range(0, 1)]
+    public float masterVolume = 1;
+    [Range(0,1)]
+    public float musicVolume = 1;
+    [Range(0, 1)]
+    public float SFXVolume = 1;
+
+    private Bus masterBus;
+
+    private Bus musicBus;
+
+    private Bus sfxBus;
+    
     public static AudioManager instance { get; private set; }
 
     private List<StudioEventEmitter> eventEmitters;
@@ -15,6 +29,10 @@ public class AudioManager : MonoBehaviour
     private List<EventInstance> eventInstances;
 
     private EventInstance musicEventInstance;
+
+    string volumeMaster = "VolumeMaster";
+    string volumeMusic = "VolumeMusic";
+    string volumeSFX = "VolumeSFX";
 
     private void Awake()
     {
@@ -26,6 +44,10 @@ public class AudioManager : MonoBehaviour
 
         eventEmitters = new List<StudioEventEmitter>();
         eventInstances = new List<EventInstance>();
+
+        masterBus = RuntimeManager.GetBus("bus:/");
+        musicBus = RuntimeManager.GetBus("bus:/Music");
+        sfxBus = RuntimeManager.GetBus("bus:/SFX");
     }
 
     private void Start()
@@ -34,6 +56,16 @@ public class AudioManager : MonoBehaviour
         {
             InitializeMusicMain();
         }
+        AudioManager.instance.masterVolume = PlayerPrefs.GetFloat(volumeMaster);
+        AudioManager.instance.musicVolume = PlayerPrefs.GetFloat(volumeMusic);
+        AudioManager.instance.SFXVolume = PlayerPrefs.GetFloat(volumeSFX);
+    }
+
+    private void Update()
+    {
+        masterBus.setVolume(masterVolume);
+        musicBus.setVolume(musicVolume);
+        sfxBus.setVolume(SFXVolume);
     }
 
     public void InitializeMusic()

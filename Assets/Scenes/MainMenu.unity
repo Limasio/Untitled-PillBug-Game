@@ -1120,6 +1120,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a1413d9c5a439ff4cb1459a28771dadf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  masterVolume: 1
+  musicVolume: 1
+  SFXVolume: 1
 --- !u!4 &574048743
 Transform:
   m_ObjectHideFlags: 0
@@ -2885,17 +2888,17 @@ MonoBehaviour:
   m_FillRect: {fileID: 1526308470}
   m_HandleRect: {fileID: 513009142}
   m_Direction: 0
-  m_MinValue: -80
-  m_MaxValue: 20
+  m_MinValue: 0
+  m_MaxValue: 1
   m_WholeNumbers: 0
   m_Value: 0
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1019314884}
-        m_TargetAssemblyTypeName: MainMenu, Assembly-CSharp
-        m_MethodName: SetVolume
-        m_Mode: 0
+      - m_Target: {fileID: 1710143675}
+        m_TargetAssemblyTypeName: VolumeSlider, Assembly-CSharp
+        m_MethodName: OnSliderValueChanged
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -3382,6 +3385,7 @@ GameObject:
   - component: {fileID: 1710143672}
   - component: {fileID: 1710143674}
   - component: {fileID: 1710143673}
+  - component: {fileID: 1710143675}
   m_Layer: 5
   m_Name: Panel
   m_TagString: Untagged
@@ -3449,6 +3453,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1710143671}
   m_CullTransparentMesh: 1
+--- !u!114 &1710143675
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1710143671}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e34a71146492c33459acadd5152632c4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  volumeType: 0
 --- !u!1 &1723746513
 GameObject:
   m_ObjectHideFlags: 0

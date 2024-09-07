@@ -45,6 +45,11 @@ public class Hitscan_DoubleBarrel : MonoBehaviour
 
     public void Shoot()
     {
+        if (TimerManager.instance.hasGameEnded == true || PauseMenu.instance.gameIsPaused == true)
+        {
+            return;
+        }
+
         //Play Shotgun Sound
         AudioManager.instance.PlayOneShot(FMODEvents.instance.explosion, this.transform.position);
         
