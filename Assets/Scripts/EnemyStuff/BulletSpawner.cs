@@ -17,6 +17,14 @@ public class BulletSpawner : MonoBehaviour
 
     private GameObject spawnedBullet;
     private float timer = 0f;
+    private enum BulletType
+    {
+        FLY,
+        LIGHTNING,
+        NONE
+    }
+
+    [SerializeField] private BulletType bulletType;
 
     // Start is called before the first frame update
     void Start()
@@ -44,6 +52,21 @@ public class BulletSpawner : MonoBehaviour
             spawnedBullet.GetComponent<Bullets>().bulletSpeed = speed;
             spawnedBullet.GetComponent<Bullets>().bulletLife = bulletLife;
             spawnedBullet.transform.rotation = transform.rotation;
+        }
+
+        switch (bulletType)
+        {
+            case BulletType.FLY:
+                //AudioManager.instance.PlayOneShot(FMODEvents.instance.fireball, this.transform.position);
+                break;
+            case BulletType.LIGHTNING:
+                AudioManager.instance.PlayOneShot(FMODEvents.instance.fireball, this.transform.position);
+                break;
+            case BulletType.NONE:
+                break;
+            default:
+                Debug.LogWarning("Bullet Type Not Found: " + bulletType);
+                break;
         }
     }
 }

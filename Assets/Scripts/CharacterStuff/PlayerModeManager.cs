@@ -58,14 +58,14 @@ public class PlayerModeManager : MonoBehaviour
                     EndBigMode();
                 }
             }
-            else if (Input.GetKeyDown("space") && bigCharges > 0 && pillbug.transform.position.x > 212)
+            else if ((Input.GetKeyDown("space") || Input.GetKeyDown(KeyCode.Mouse2)) && bigCharges > 0 && pillbug.transform.position.x > 212)
             {
                 bigTimeLeft = bigTime;
                 bigCharges--;
                 // bigChargeSlider.value = bigCharges;
                 ActivateBigMode();
             }
-            else if (Input.GetKeyDown("space") && bigCharges > 0 && pillbug.transform.position.x < 212)
+            else if ((Input.GetKeyDown("space") || Input.GetKeyDown(KeyCode.Mouse2)) && bigCharges > 0 && pillbug.transform.position.x < 212)
             {
                 ArrowScript.flashArrow();
             }

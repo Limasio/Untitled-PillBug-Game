@@ -1995,6 +1995,11 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!4 &266589623 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4076137604886889556, guid: fa93d381134265f45bb584effcedd629, type: 3}
+  m_PrefabInstance: {fileID: 607732372}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &278129599
 GameObject:
   m_ObjectHideFlags: 0
@@ -2723,11 +2728,18 @@ MonoBehaviour:
     Path: event:/Music/MusicFenetic
   <pbrolloutThemeMusic>k__BackingField:
     Guid:
-      Data1: 0
-      Data2: 0
-      Data3: 0
-      Data4: 0
-    Path: 
+      Data1: 788932716
+      Data2: 1333889786
+      Data3: 1754681759
+      Data4: 225806526
+    Path: event:/Music/pbrolloutTheme
+  <playerHurt>k__BackingField:
+    Guid:
+      Data1: 794396317
+      Data2: 1113925151
+      Data3: 1490476196
+      Data4: 630624363
+    Path: event:/SFX/PlayerHurt
   <explosion>k__BackingField:
     Guid:
       Data1: 2023592768
@@ -2749,6 +2761,27 @@ MonoBehaviour:
       Data3: -1689009989
       Data4: -34909724
     Path: event:/SFX/Radar
+  <fireball>k__BackingField:
+    Guid:
+      Data1: 727884493
+      Data2: 1228895806
+      Data3: 1595743669
+      Data4: -270592823
+    Path: event:/SFX/Fireball
+  <gameOver8bit>k__BackingField:
+    Guid:
+      Data1: -1829830239
+      Data2: 1138790231
+      Data3: -725045115
+      Data4: -540935025
+    Path: event:/SFX/GameOver8Bit
+  <gameOverSax>k__BackingField:
+    Guid:
+      Data1: 768384247
+      Data2: 1187857535
+      Data3: 61890464
+      Data4: -781763609
+    Path: event:/SFX/GameOverSax
 --- !u!1 &371797802
 GameObject:
   m_ObjectHideFlags: 0
@@ -4474,7 +4507,7 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 0}
+    m_TransformParent: {fileID: 1964157615}
     m_Modifications:
     - target: {fileID: 3519023043262509370, guid: fa93d381134265f45bb584effcedd629, type: 3}
       propertyPath: m_UTess2D
@@ -4830,15 +4863,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4076137604886889556, guid: fa93d381134265f45bb584effcedd629, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 30.900002
+      value: -25.069313
       objectReference: {fileID: 0}
     - target: {fileID: 4076137604886889556, guid: fa93d381134265f45bb584effcedd629, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -3
+      value: -3.0276375
       objectReference: {fileID: 0}
     - target: {fileID: 4076137604886889556, guid: fa93d381134265f45bb584effcedd629, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: -0.001340193
       objectReference: {fileID: 0}
     - target: {fileID: 4076137604886889556, guid: fa93d381134265f45bb584effcedd629, type: 3}
       propertyPath: m_LocalRotation.w
@@ -4846,15 +4879,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4076137604886889556, guid: fa93d381134265f45bb584effcedd629, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 4076137604886889556, guid: fa93d381134265f45bb584effcedd629, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 4076137604886889556, guid: fa93d381134265f45bb584effcedd629, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 4076137604886889556, guid: fa93d381134265f45bb584effcedd629, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -6223,10 +6256,10 @@ MonoBehaviour:
   scoreManager: {fileID: 1703275357}
   GameOverPanel: {fileID: 514571178}
   hasTimerStarted: 0
-  timeBonusInitial: 60
-  timeBonus45sec: 45
-  timeBonus1min30sec: 30
-  timeBonus3min: 25
+  timeBonusInitial: 30
+  timeBonus45sec: 27.5
+  timeBonus1min30sec: 25
+  timeBonus3min: 22.5
   timeBonus5min: 20
   music: {fileID: 0}
 --- !u!114 &825929993
@@ -9548,6 +9581,11 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!4 &1541904210 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 6162414481889795409, guid: 818502020a07cdd45afbb7b111dfe4bf, type: 3}
+  m_PrefabInstance: {fileID: 2059444420}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1547172365
 GameObject:
   m_ObjectHideFlags: 0
@@ -11622,6 +11660,8 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1379875072}
+  - {fileID: 266589623}
+  - {fileID: 1541904210}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1981157164
@@ -11790,7 +11830,7 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 0}
+    m_TransformParent: {fileID: 1964157615}
     m_Modifications:
     - target: {fileID: 3068591406429807578, guid: 818502020a07cdd45afbb7b111dfe4bf, type: 3}
       propertyPath: m_Name
@@ -11798,15 +11838,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6162414481889795409, guid: 818502020a07cdd45afbb7b111dfe4bf, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 80.21
+      value: 24.240685
       objectReference: {fileID: 0}
     - target: {fileID: 6162414481889795409, guid: 818502020a07cdd45afbb7b111dfe4bf, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.49
+      value: 1.4623625
       objectReference: {fileID: 0}
     - target: {fileID: 6162414481889795409, guid: 818502020a07cdd45afbb7b111dfe4bf, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -0.001340193
+      value: -0.002680386
       objectReference: {fileID: 0}
     - target: {fileID: 6162414481889795409, guid: 818502020a07cdd45afbb7b111dfe4bf, type: 3}
       propertyPath: m_LocalRotation.w
@@ -11948,10 +11988,16 @@ MonoBehaviour:
   plat1: {fileID: 1985839637899744382, guid: a0a6fbd114976ff4b8369f66e9666ea1, type: 3}
   plat2: {fileID: 1558467454804308998, guid: 6f761a071cc2346429d480c5e29bf8b3, type: 3}
   plat3: {fileID: 8680139250794226141, guid: 0501d453dc1d03241b7a6d5dea565832, type: 3}
-  plat4: {fileID: 8680139250794226141, guid: a8deb92ae8fa62442b65ad5103a6b47d, type: 3}
+  plat4a: {fileID: 8680139250794226141, guid: a8deb92ae8fa62442b65ad5103a6b47d, type: 3}
+  plat4b: {fileID: 1558467454804308998, guid: f784cfcb40849b545b7c53b9e7ab77e0, type: 3}
+  plat4c: {fileID: 1558467454804308998, guid: 95a89aa2cb262b7408a8d93f875a008b, type: 3}
+  plat4d: {fileID: 1558467454804308998, guid: 157839988e62d9049b1ac606f89fcd2a, type: 3}
   plat5: {fileID: 1558467454804308998, guid: e583319fa1e1895499405a76b336c407, type: 3}
   plat6: {fileID: 8680139250794226141, guid: 6fb0e6f276f58be419057775136195ba, type: 3}
   plat7: {fileID: 1985839637899744382, guid: 01255a931df4dc742bb7be7dad076901, type: 3}
+  plat8: {fileID: 1985839637899744382, guid: 60b5e31b96497a14388b13e0a7a46d9f, type: 3}
+  plat9: {fileID: 1558467454804308998, guid: 8f6d9d59ec4208445b63233509f78548, type: 3}
+  plat10: {fileID: 8680139250794226141, guid: 838889f3bc33bb9429d7aafcf079304e, type: 3}
   player: {fileID: 1027186433}
   player2: {fileID: 620767992}
   numberOfObjects: 50
@@ -12375,8 +12421,6 @@ SceneRoots:
   - {fileID: 490560949}
   - {fileID: 1147177301}
   - {fileID: 113172043}
-  - {fileID: 607732372}
-  - {fileID: 2059444420}
   - {fileID: 514889904}
   - {fileID: 278129603}
   - {fileID: 1372343077}

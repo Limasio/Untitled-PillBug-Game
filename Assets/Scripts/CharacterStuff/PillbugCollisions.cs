@@ -36,6 +36,7 @@ public class PillbugCollisions : MonoBehaviour
         if (canHit)
         {
             Destroy(hit.gameObject);
+            AudioManager.instance.PlayOneShot(FMODEvents.instance.playerHurt, this.transform.position);
             rigidbody.velocity = new Vector2(0f, 0f);
             rigidbody.AddForce(knockback, ForceMode2D.Impulse);
             timer.LoseTime(timePenalty);

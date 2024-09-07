@@ -100,9 +100,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e96f4c50e1b7cfb43a8e73ca657fb3c3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bulletLife: 10
+  bulletLife: 6.5
   bulletSpeed: 10
   bulletRotation: 0
+  inMainMenu: 0
+  teleportOffset: 0
 --- !u!61 &7754884120165653921
 BoxCollider2D:
   m_ObjectHideFlags: 0

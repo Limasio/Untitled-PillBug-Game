@@ -8,13 +8,18 @@ public class PlatformManager : MonoBehaviour
     [SerializeField] GameObject plat1;
     [SerializeField] GameObject plat2;
     [SerializeField] GameObject plat3;
-    [SerializeField] GameObject plat4;
+    [SerializeField] GameObject plat4a;
+    [SerializeField] GameObject plat4b;
+    [SerializeField] GameObject plat4c;
+    [SerializeField] GameObject plat4d;
     [SerializeField] GameObject plat5;
     [SerializeField] GameObject plat6;
     [SerializeField] GameObject plat7;
+    [SerializeField] GameObject plat8;
+    [SerializeField] GameObject plat9;
+    [SerializeField] GameObject plat10;
     [SerializeField] GameObject player;
     [SerializeField] GameObject player2;
-    //[SerializeField] Transform plat3;
 
     [SerializeField] int numberOfObjects;
     [SerializeField] int maxTimers;
@@ -38,34 +43,68 @@ public class PlatformManager : MonoBehaviour
     private void Start()
     { 
         objectQueue = new Queue<GameObject>(numberOfObjects);
-        for (int i = 0; i < numberOfObjects; i++)
+        for (int i = 0; i < numberOfObjects; i++)               //There's prob a better way to do this but it runs fine so I don't care :)
         {
-            float randomNumber = Random.Range(0.0f, 100.0f);
-            if(randomNumber <= 15f)
+            float randomNumber = Random.Range(0.0f, 118.0f);
+            if(randomNumber <= 12f)
             {
                 objectQueue.Enqueue((GameObject)Instantiate(plat1));
             }
-            else if (randomNumber <= 30f)
+            else if (randomNumber <= 24f)
             {
                 objectQueue.Enqueue((GameObject)Instantiate(plat2));
             }
-            else if(randomNumber <= 45f)
+            else if(randomNumber <= 36f)
             {
                 objectQueue.Enqueue((GameObject)Instantiate(plat5));
             }
-            else if (randomNumber <= 60f)
+            else if (randomNumber <= 48f)
             {
                 objectQueue.Enqueue((GameObject)Instantiate(plat6));
             }
-            else if (randomNumber <= 77.7f && currentTimers < maxTimers && timerSpacingCounter == minTimerSpacing)
+            else if (randomNumber <= 58f && currentTimers < maxTimers && timerSpacingCounter == minTimerSpacing)
             {
-                objectQueue.Enqueue((GameObject)Instantiate(plat4));
-                currentTimers++;
-                timerSpacingCounter = 0;
+                if(Random.Range(0.0f, 4.0f) > 3.0f)
+                {
+                    objectQueue.Enqueue((GameObject)Instantiate(plat4a));
+                    currentTimers++;
+                    timerSpacingCounter = 0;
+                }
+                else if (Random.Range(0.0f, 4.0f) > 2.0f)
+                {
+                    objectQueue.Enqueue((GameObject)Instantiate(plat4c));
+                    currentTimers++;
+                    timerSpacingCounter = 0;
+                }
+                else if (Random.Range(0.0f, 4.0f) > 1.0f)
+                {
+                    objectQueue.Enqueue((GameObject)Instantiate(plat4d));
+                    currentTimers++;
+                    timerSpacingCounter = 0;
+                }
+                else
+                {
+                    objectQueue.Enqueue((GameObject)Instantiate(plat4b));
+                    currentTimers++;
+                    timerSpacingCounter = 0;
+                }
+                
             }
-            else if (randomNumber <= 85f)
+            else if (randomNumber <= 70f)
             {
                 objectQueue.Enqueue((GameObject)Instantiate(plat5));
+            }
+            else if (randomNumber <= 82f)
+            {
+                objectQueue.Enqueue((GameObject)Instantiate(plat8));
+            }
+            else if (randomNumber <= 94f)
+            {
+                objectQueue.Enqueue((GameObject)Instantiate(plat9));
+            }
+            else if (randomNumber <= 106f)
+            {
+                objectQueue.Enqueue((GameObject)Instantiate(plat10));
             }
             else
             {
@@ -132,36 +171,76 @@ public class PlatformManager : MonoBehaviour
         position.y += scale.y * 0.5f;
 
         float randomNumber = Random.Range(0.0f, 100.0f);
-        if (randomNumber <= 15f)
+        if (randomNumber <= 12f)
         {
             GameObject platClone = Instantiate(plat1, position, Quaternion.identity);
             objectQueue.Enqueue(platClone);
         }
-        else if (randomNumber <= 30f)
+        else if (randomNumber <= 24f)
         {
             GameObject platClone = Instantiate(plat2, position, Quaternion.identity);
             objectQueue.Enqueue(platClone);
         }
-        else if (randomNumber <= 45f)
+        else if (randomNumber <= 36f)
         {
             GameObject platClone = Instantiate(plat5, position, Quaternion.identity);
             objectQueue.Enqueue(platClone);
         }
-        else if (randomNumber <= 60f)
+        else if (randomNumber <= 48f)
         {
             GameObject platClone = Instantiate(plat6, position, Quaternion.identity);
             objectQueue.Enqueue(platClone);
         }
-        else if (randomNumber <= 77.7f && currentTimers < maxTimers && timerSpacingCounter == minTimerSpacing)
+        else if (randomNumber <= 58f && currentTimers < maxTimers && timerSpacingCounter == minTimerSpacing)
         {
-            GameObject platClone = Instantiate(plat4, position, Quaternion.identity);
-            objectQueue.Enqueue(platClone);
-            //currentTimers++;
-            timerSpacingCounter = 0;
+            if (Random.Range(0.0f, 4.0f) > 3.0f)
+            {
+                GameObject platClone = Instantiate(plat4a, position, Quaternion.identity);
+                objectQueue.Enqueue(platClone);
+                //currentTimers++;
+                timerSpacingCounter = 0;
+            }
+            else if (Random.Range(0.0f, 4.0f) > 2.0f)
+            {
+                GameObject platClone = Instantiate(plat4c, position, Quaternion.identity);
+                objectQueue.Enqueue(platClone);
+                //currentTimers++;
+                timerSpacingCounter = 0;
+            }
+            else if (Random.Range(0.0f, 4.0f) > 1.0f)
+            {
+                GameObject platClone = Instantiate(plat4d, position, Quaternion.identity);
+                objectQueue.Enqueue(platClone);
+                //currentTimers++;
+                timerSpacingCounter = 0;
+            }
+            else
+            {
+                GameObject platClone = Instantiate(plat4b, position, Quaternion.identity);
+                objectQueue.Enqueue(platClone);
+                //currentTimers++;
+                timerSpacingCounter = 0;
+            }
+
         }
-        else if (randomNumber <= 85f)
+        else if (randomNumber <= 70f)
         {
             GameObject platClone = Instantiate(plat7, position, Quaternion.identity);
+            objectQueue.Enqueue(platClone);
+        }
+        else if (randomNumber <= 82f)
+        {
+            GameObject platClone = Instantiate(plat8, position, Quaternion.identity);
+            objectQueue.Enqueue(platClone);
+        }
+        else if (randomNumber <= 94f)
+        {
+            GameObject platClone = Instantiate(plat9, position, Quaternion.identity);
+            objectQueue.Enqueue(platClone);
+        }
+        else if (randomNumber <= 106f)
+        {
+            GameObject platClone = Instantiate(plat10, position, Quaternion.identity);
             objectQueue.Enqueue(platClone);
         }
         else

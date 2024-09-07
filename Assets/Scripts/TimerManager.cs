@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using UnityEngine.SceneManagement;
+using System.Security.Cryptography;
 
 public class TimerManager : MonoBehaviour
 {
@@ -27,6 +28,8 @@ public class TimerManager : MonoBehaviour
     [SerializeField] float timeBonus5min;
     [SerializeField] GameObject music;
 
+    private float timer = 0f;
+
     private void Awake()
     {
         if (instance != null)
@@ -44,7 +47,16 @@ public class TimerManager : MonoBehaviour
         hasGameEnded = false;
     }
 
-    // Update is called once per frame
+    void FixedUpdate()
+    {
+        if (hasTimerStarted)
+        {
+            timer += Time.deltaTime;
+            Debug.Log(timer);
+        }
+    }
+
+    // ik this is bad but idgaf bc i am placing blocks n shit cuz im in fucking minecraftttt i am placing blocks n shit cuz im in fucking minecraftttt ohhhhh my goddddd is that... fuckin pig
     void Update()
     {
         if (hasTimerStarted)
@@ -74,19 +86,19 @@ public class TimerManager : MonoBehaviour
         if (hasTimerStarted)
         {
             //I should be using a case statment but I'm not sorrrry colbyyyyy
-            if(scoreManager.currentScore < 45)
+            if(timer < 45)
             {
                 timeLeft += timeBonusInitial;
             }
-            else if(scoreManager.currentScore < 105)
+            else if(timer < 105)
             {
                 timeLeft += timeBonus45sec;
             }
-            else if(scoreManager.currentScore < 180)
+            else if(timer < 180)
             {
                 timeLeft += timeBonus1min30sec;
             }
-            else if(scoreManager.currentScore < 300)
+            else if(timer < 300)
             {
                 timeLeft += timeBonus3min;
             }
@@ -118,6 +130,7 @@ public class TimerManager : MonoBehaviour
         hasTimerStarted = false;
         scoreManager.ScoreCheck();
         AudioManager.instance.StopMusic();
+        AudioManager.instance.PlayOneShot(FMODEvents.instance.gameOverSax, this.transform.position);
         timerText.text = "00:00";
         GameOverPanel.SetActive(true);
         Time.timeScale = 0f;

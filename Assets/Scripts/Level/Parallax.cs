@@ -28,7 +28,7 @@ public class Parallax : MonoBehaviour
         //Debug.Log(temp);
         transform.position = new Vector3(startpos + dist, transform.position.y, transform.position.z);
 
-        Debug.Log(temp);
+        //Debug.Log(temp);
 
         if ((temp > startpos + length) && temp > 20) startpos += length;
         else if (temp < startpos - length) startpos -= length;

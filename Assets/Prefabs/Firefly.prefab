@@ -256,8 +256,12 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7684488474572335608, guid: 810a54e4a10b1b744b35e4c71774935f, type: 3}
-      propertyPath: firingRate
+      propertyPath: bulletType
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7684488474572335608, guid: 810a54e4a10b1b744b35e4c71774935f, type: 3}
+      propertyPath: firingRate
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -342,8 +346,12 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7684488474572335608, guid: 810a54e4a10b1b744b35e4c71774935f, type: 3}
+      propertyPath: bulletType
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7684488474572335608, guid: 810a54e4a10b1b744b35e4c71774935f, type: 3}
       propertyPath: firingRate
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -428,8 +436,12 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7684488474572335608, guid: 810a54e4a10b1b744b35e4c71774935f, type: 3}
-      propertyPath: firingRate
+      propertyPath: bulletType
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7684488474572335608, guid: 810a54e4a10b1b744b35e4c71774935f, type: 3}
+      propertyPath: firingRate
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

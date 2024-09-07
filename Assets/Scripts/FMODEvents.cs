@@ -9,6 +9,8 @@ public class FMODEvents : MonoBehaviour
     [field: SerializeField] public EventReference feneticMusic { get; private set; }
 
     [field: SerializeField] public EventReference pbrolloutThemeMusic { get; private set; }
+    [field: Header("Player SFX")]
+    [field: SerializeField] public EventReference playerHurt { get; private set; }
 
     [field: Header("Explosion/Gun SFX")]
     [field: SerializeField] public EventReference explosion { get; private set; }
@@ -16,6 +18,12 @@ public class FMODEvents : MonoBehaviour
 
     [field: Header("Entity SFX")]
     [field: SerializeField] public EventReference radar { get; private set; }
+    [field: SerializeField] public EventReference fireball { get; private set; }
+
+    [field: Header("Game SFX")]
+    [field: SerializeField] public EventReference gameOver8bit { get; private set; }
+
+    [field: SerializeField] public EventReference gameOverSax { get; private set; }
 
     //The "field:" is there bc when using a public getter and a private setter the Header/SerializeField won't show up in unity w/o it
 
