@@ -91,8 +91,8 @@ SpriteShapeRenderer:
   - {fileID: 21300000, guid: 608e61deb05c54660bebf5a4dd2ee02d, type: 3}
   - {fileID: 21300000, guid: 608e61deb05c54660bebf5a4dd2ee02d, type: 3}
   m_LocalAABB:
-    m_Center: {x: 24.987629, y: -24.250912, z: 0}
-    m_Extent: {x: 25.013086, y: 25.749096, z: 0}
+    m_Center: {x: 25.000004, y: -24.250912, z: 0}
+    m_Extent: {x: 25.000004, y: 25.749096, z: 0}
   m_SpriteSortPoint: 0
 --- !u!114 &3519023043262509370
 MonoBehaviour:
@@ -109,7 +109,7 @@ MonoBehaviour:
   m_Spline:
     m_IsOpenEnded: 0
     m_ControlPoints:
-    - position: {x: -0.024738312, y: -0.024003983, z: 0}
+    - position: {x: 0, y: 0, z: 0}
       leftTangent: {x: 0, y: 0, z: 0}
       rightTangent: {x: 0, y: 0, z: 0}
       mode: 0
@@ -158,11 +158,11 @@ MonoBehaviour:
   m_Creator: {fileID: 0}
   m_Modifiers: []
   m_ColliderSegment:
-  - {x: -0.024736002, y: -0.028818596}
-  - {x: 49.999996, y: -0.004814614}
+  - {x: 0, y: -0.004814614}
+  - {x: 50, y: -0.0048146145}
   - {x: 50, y: -50}
   - {x: 0, y: -50}
-  - {x: -0.024736002, y: -0.028818596}
+  - {x: 0, y: -0.004814614}
 --- !u!50 &1741179107507970665
 Rigidbody2D:
   serializedVersion: 4
@@ -234,9 +234,9 @@ PolygonCollider2D:
   m_AutoTiling: 0
   m_Points:
     m_Paths:
-    - - {x: -0.024736002, y: -0.028818596}
-      - {x: 49.999996, y: -0.004814614}
+    - - {x: 0, y: -0.004814614}
+      - {x: 50, y: -0.0048146145}
       - {x: 50, y: -50}
       - {x: 0, y: -50}
-      - {x: -0.024736002, y: -0.028818596}
+      - {x: 0, y: -0.004814614}
   m_UseDelaunayMesh: 0

@@ -14,6 +14,7 @@ public class BulletSpawner : MonoBehaviour
     [Header("Spawner Attributes")]
     [SerializeField] private SpawnerType spawnerType;
     [SerializeField] private float firingRate = 1f;
+    [SerializeField] private GameObject bulletHolder;
 
     private GameObject spawnedBullet;
     private float timer = 0f;
@@ -52,6 +53,7 @@ public class BulletSpawner : MonoBehaviour
             spawnedBullet.GetComponent<Bullets>().bulletSpeed = speed;
             spawnedBullet.GetComponent<Bullets>().bulletLife = bulletLife;
             spawnedBullet.transform.rotation = transform.rotation;
+            spawnedBullet.transform.SetParent(bulletHolder.transform);
         }
 
         switch (bulletType)
