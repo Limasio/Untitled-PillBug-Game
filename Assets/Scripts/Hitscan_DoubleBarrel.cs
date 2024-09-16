@@ -30,6 +30,9 @@ public class Hitscan_DoubleBarrel : MonoBehaviour
     
     [SerializeField] Hitscan_GrapplingGun grapplingGun;
     [SerializeField] GameObject DestructionPrefab;
+    [SerializeField] GameObject FlyExplosion;
+    [SerializeField] GameObject FireFlyExplosion;
+    [SerializeField] GameObject FlyBushLeaves;
 
     // Start is called before the first frame update
     void Start()
@@ -65,15 +68,38 @@ public class Hitscan_DoubleBarrel : MonoBehaviour
             // Debug.Log("hit: " + target);
             if (target.layer == 7 || target.layer == 10)
             {
+                if (target.gameObject.GetComponent<Fly>() != null)
+                {
+                    ScoreManager.instance.AddScore(850);
+                    Debug.Log("AddingFlyScore");
+                    Instantiate(FlyExplosion, target.gameObject.transform.position, Quaternion.identity);
+                }
+                else if (target.gameObject.GetComponent<FlyBush>() != null)
+                {
+                    ScoreManager.instance.AddScore(1300);
+                    Debug.Log("AddingFlyBushScore");
+                    Instantiate(FlyBushLeaves, target.gameObject.transform.position, Quaternion.identity);
+                }
+                else if (target.gameObject.GetComponent<FireFly>() != null)
+                {
+                    ScoreManager.instance.AddScore(1850);
+                    Instantiate(FireFlyExplosion, target.gameObject.transform.position, Quaternion.identity);
+                    Debug.Log("AddingFireFlyScore");
+                }
+                else if (target.gameObject.GetComponent<LightningBolt>() != null)
+                {
+                    ScoreManager.instance.AddScore(1050);
+                    Debug.Log("AddingLightningBoltScore");
+                }
                 // Debug.Log("shot " + target);
-                Instantiate(DestructionPrefab, target.gameObject.transform.position, Quaternion.identity);
+                //Instantiate(DestructionPrefab, target.gameObject.transform.position, Quaternion.identity);
                 Destroy(target);
                 if (grapplingGun.grappleRope.enabled) grapplingGun.grappleRope.enabled = false;
             }
             else if(target.layer == 8)
             {
                 // Debug.Log("shot " + target);
-                timer.AddTime();
+                timer.AddTime(false);
                 Instantiate(DestructionPrefab, target.gameObject.transform.position, Quaternion.identity);
                 Destroy(target);
                 if (grapplingGun.grappleRope.enabled) grapplingGun.grappleRope.enabled = false;

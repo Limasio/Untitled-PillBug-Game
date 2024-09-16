@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 8652514937880304308}
   - component: {fileID: 2565386522604391963}
   - component: {fileID: 7939654523202392356}
+  - component: {fileID: 2512807667776161801}
   - component: {fileID: 4721619172008513413}
   m_Layer: 7
   m_Name: FlySpawner
@@ -114,6 +115,18 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 7
+--- !u!114 &2512807667776161801
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4359367235008209116}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6bc4a0b9a6143414b8325a902c8b13df, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!70 &4721619172008513413
 CapsuleCollider2D:
   m_ObjectHideFlags: 0

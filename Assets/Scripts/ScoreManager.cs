@@ -16,10 +16,18 @@ public class ScoreManager : MonoBehaviour
     public int currentScore;
 
     private int highScore;
-    
+
+    public static ScoreManager instance { get; private set; }
+
     // Start is called before the first frame update
     void Awake()
     {
+        if (instance != null)
+        {
+            Debug.LogError("Found more than one Audio Manager in the scene.");
+        }
+        instance = this;
+
         currentScoreFloat = 0;
         IsGameInPlay = false;
         highScore = PlayerPrefs.GetInt("highscore", 0);
@@ -31,8 +39,8 @@ public class ScoreManager : MonoBehaviour
     {
         if (IsGameInPlay)
         {
-            currentScoreFloat += Time.deltaTime;
-            currentScore = (int)(currentScoreFloat * 200);
+            currentScoreFloat += (Time.deltaTime * 351);
+            currentScore = (int)(currentScoreFloat);
             scoreText.text = string.Format("{0:0000000}", currentScore);
             // Debug.Log("Adding Score");
         }
@@ -46,9 +54,11 @@ public class ScoreManager : MonoBehaviour
         IsGameInPlay = true;
     }
 
-    public void AddScore(int score)
+    public void AddScore(float score)
     {
-        currentScore = currentScore + score;
+        currentScoreFloat = currentScoreFloat + score;
+        Debug.Log("Score Added: " + score);
+        Debug.Log("New Score: " + currentScore);
     }
 
     public void ScoreCheck()

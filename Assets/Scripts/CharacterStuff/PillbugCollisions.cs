@@ -9,6 +9,8 @@ public class PillbugCollisions : MonoBehaviour
     [SerializeField] Rigidbody2D rigidbody;
     [SerializeField] Vector2 knockback;
     [SerializeField] float hitDelay;
+    [SerializeField] GameObject FlyExplosion;
+    [SerializeField] GameObject FireFlyExplosion;
     private float delayCounter;
     private bool canHit;
 
@@ -31,11 +33,33 @@ public class PillbugCollisions : MonoBehaviour
         }
     }
 
-    void OnTriggerEnter2D(Collider2D hit)
+    void OnTriggerEnter2D(Collider2D collision)
     {
         if (canHit)
         {
-            Destroy(hit.gameObject);
+            if (collision.gameObject.GetComponent<Fly>() != null)
+            {
+                ScoreManager.instance.AddScore(1700);
+                Debug.Log("AddingFlyScore");
+                Instantiate(FlyExplosion, collision.gameObject.transform.position, Quaternion.identity);
+            }
+            else if (collision.gameObject.GetComponent<FlyBush>() != null)
+            {
+                ScoreManager.instance.AddScore(2600);
+                Debug.Log("AddingFlyBushScore");
+            }
+            else if (collision.gameObject.GetComponent<FireFly>() != null)
+            {
+                ScoreManager.instance.AddScore(3700);
+                Debug.Log("AddingFireFlyScore");
+                Instantiate(FireFlyExplosion, collision.gameObject.transform.position, Quaternion.identity);
+            }
+            else if (collision.gameObject.GetComponent<LightningBolt>() != null)
+            {
+                ScoreManager.instance.AddScore(2100);
+                Debug.Log("AddingLightningBoltScore");
+            }
+            Destroy(collision.gameObject);
             AudioManager.instance.PlayOneShot(FMODEvents.instance.playerHurt, this.transform.position);
             rigidbody.velocity = new Vector2(0f, 0f);
             rigidbody.AddForce(knockback, ForceMode2D.Impulse);

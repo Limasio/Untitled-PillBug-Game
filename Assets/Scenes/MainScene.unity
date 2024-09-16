@@ -5405,6 +5405,11 @@ MonoBehaviour:
   timer: {fileID: 825929992}
   background: {fileID: 107452887}
   DestructionPrefab: {fileID: 3549940481609144435, guid: 476efeb4ece8af44a9e964405f392236, type: 3}
+  FlyExplosion: {fileID: 81312865823573274, guid: 04ab7613b82500648b8a3504778e664f, type: 3}
+  FlyBushLeaves: {fileID: 3549940481609144435, guid: 672a4d3180da1bc47b6279ea3b8ffdb6, type: 3}
+  FireFlyExplosion: {fileID: 169553758643738893, guid: df220c4964e5dd94b8a5960fb7137bdd, type: 3}
+  SlantPlatGibs: {fileID: 6510472082100709490, guid: 0e6af9daa60339441b0fe5b089c485df, type: 3}
+  HorizPlatGibs: {fileID: 6510472082100709490, guid: bb54e5cc27e27544fa9d75635dc45e91, type: 3}
   explode: {fileID: 8300000, guid: f29d92be9a159014fbdbc54104ca1b97, type: 3}
 --- !u!95 &620767998
 Animator:
@@ -7216,6 +7221,9 @@ MonoBehaviour:
   moder: {fileID: 381532783}
   grapplingGun: {fileID: 1438344778}
   DestructionPrefab: {fileID: 3549940481609144435, guid: 476efeb4ece8af44a9e964405f392236, type: 3}
+  FlyExplosion: {fileID: 81312865823573274, guid: 04ab7613b82500648b8a3504778e664f, type: 3}
+  FireFlyExplosion: {fileID: 169553758643738893, guid: df220c4964e5dd94b8a5960fb7137bdd, type: 3}
+  FlyBushLeaves: {fileID: 3549940481609144435, guid: 672a4d3180da1bc47b6279ea3b8ffdb6, type: 3}
 --- !u!95 &1027186444
 Animator:
   serializedVersion: 5
@@ -7254,6 +7262,8 @@ MonoBehaviour:
   rigidbody: {fileID: 1027186439}
   knockback: {x: -10, y: 10}
   hitDelay: 1
+  FlyExplosion: {fileID: 81312865823573274, guid: 04ab7613b82500648b8a3504778e664f, type: 3}
+  FireFlyExplosion: {fileID: 169553758643738893, guid: df220c4964e5dd94b8a5960fb7137bdd, type: 3}
 --- !u!212 &1027186446
 SpriteRenderer:
   m_ObjectHideFlags: 0

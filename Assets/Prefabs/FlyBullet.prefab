@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 7754884120165653921}
   - component: {fileID: -1402206738433728973}
   - component: {fileID: 505382127276709591}
+  - component: {fileID: 1365318931547017050}
   m_Layer: 10
   m_Name: FlyBullet
   m_TagString: Untagged
@@ -198,3 +199,15 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &1365318931547017050
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8517136325701000189}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b6c1eed1c0e54d0439f5fa78428e17cb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

@@ -28,7 +28,7 @@ public class TimerManager : MonoBehaviour
     [SerializeField] float timeBonus5min;
     [SerializeField] GameObject music;
 
-    private float timer = 0f;
+    public float globalTimer { get; private set; }
 
     private void Awake()
     {
@@ -37,6 +37,7 @@ public class TimerManager : MonoBehaviour
             Debug.LogError("Found more than one Timer Manager in the scene.");
         }
         instance = this;
+        globalTimer = 0f;
     }
 
     // Start is called before the first frame update
@@ -51,8 +52,8 @@ public class TimerManager : MonoBehaviour
     {
         if (hasTimerStarted)
         {
-            timer += Time.deltaTime;
-            Debug.Log(timer);
+            globalTimer += Time.deltaTime;
+            //Debug.Log(timer);
         }
     }
 
@@ -81,24 +82,51 @@ public class TimerManager : MonoBehaviour
         hasTimerStarted = true;
     }
 
-    public void AddTime()
+    public void AddTime(bool isBig)
     {
-        if (hasTimerStarted)
+        if (hasTimerStarted && isBig)
         {
             //I should be using a case statment but I'm not sorrrry colbyyyyy
-            if(timer < 45)
+            if(globalTimer < 45)
+            {
+                timeLeft += (timeBonusInitial * 2);
+            }
+            else if(globalTimer < 105)
+            {
+                timeLeft += (timeBonus45sec * 2);
+            }
+            else if(globalTimer < 180)
+            {
+                timeLeft += (timeBonus1min30sec * 2);
+            }
+            else if(globalTimer < 300)
+            {
+                timeLeft += (timeBonus3min * 2);
+            }
+            else
+            {
+                timeLeft += (timeBonus5min * 2);
+            }
+            //timeLeft += timeBonus;
+            int min = Mathf.FloorToInt(timeLeft / 60);
+            int sec = Mathf.FloorToInt(timeLeft % 60);
+            timerText.text = string.Format("{0:00}:{1:00}", min, sec);
+        }
+        else
+        {
+            if (globalTimer < 45)
             {
                 timeLeft += timeBonusInitial;
             }
-            else if(timer < 105)
+            else if (globalTimer < 105)
             {
                 timeLeft += timeBonus45sec;
             }
-            else if(timer < 180)
+            else if (globalTimer < 180)
             {
                 timeLeft += timeBonus1min30sec;
             }
-            else if(timer < 300)
+            else if (globalTimer < 300)
             {
                 timeLeft += timeBonus3min;
             }

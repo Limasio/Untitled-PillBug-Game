@@ -47,7 +47,7 @@ public class PlatformManager : MonoBehaviour
         objectQueue = new Queue<GameObject>(numberOfObjects);
         for (int i = 0; i < numberOfObjects; i++)               //There's prob a better way to do this but it runs fine so I don't care :)
         {
-            float randomNumber = Random.Range(0.0f, 118.0f);
+            float randomNumber = Random.Range(0.0f, 44.0f);
             if(randomNumber <= 12f)
             {
                 //objectQueue.Enqueue((GameObject)Instantiate(plat1));
@@ -62,23 +62,23 @@ public class PlatformManager : MonoBehaviour
                 platClone.transform.SetParent(parentGameObject.transform);
                 objectQueue.Enqueue(platClone);
             }
-            else if(randomNumber <= 36f)
-            {
+            //else if(randomNumber <= 36f)
+            //{
                 //objectQueue.Enqueue((GameObject)Instantiate(plat5));
-                GameObject platClone = Instantiate(plat5);
-                platClone.transform.SetParent(parentGameObject.transform);
-                objectQueue.Enqueue(platClone);
-            }
-            else if (randomNumber <= 48f)
-            {
+            //    GameObject platClone = Instantiate(plat5);
+            //    platClone.transform.SetParent(parentGameObject.transform);
+            //    objectQueue.Enqueue(platClone);
+            //}
+            //else if (randomNumber <= 48f)
+            //{
                 //objectQueue.Enqueue((GameObject)Instantiate(plat6));
-                GameObject platClone = Instantiate(plat6);
-                platClone.transform.SetParent(parentGameObject.transform);
-                objectQueue.Enqueue(platClone);
-            }
-            else if (randomNumber <= 58f && currentTimers < maxTimers && timerSpacingCounter == minTimerSpacing)
+            //    GameObject platClone = Instantiate(plat6);
+            //    platClone.transform.SetParent(parentGameObject.transform);
+            //    objectQueue.Enqueue(platClone);
+            //}
+            else if (randomNumber <= 32f && currentTimers < maxTimers && timerSpacingCounter == minTimerSpacing)
             {
-                if(Random.Range(0.0f, 4.0f) > 3.0f)
+                if(Random.Range(2.0f, 4.0f) > 3.0f)
                 {
                     //objectQueue.Enqueue((GameObject)Instantiate(plat4a));
                     GameObject platClone = Instantiate(plat4a);
@@ -87,7 +87,7 @@ public class PlatformManager : MonoBehaviour
                     currentTimers++;
                     timerSpacingCounter = 0;
                 }
-                else if (Random.Range(0.0f, 4.0f) > 2.0f)
+                else
                 {
                     //objectQueue.Enqueue((GameObject)Instantiate(plat4c));
                     GameObject platClone = Instantiate(plat4c);
@@ -96,54 +96,54 @@ public class PlatformManager : MonoBehaviour
                     currentTimers++;
                     timerSpacingCounter = 0;
                 }
-                else if (Random.Range(0.0f, 4.0f) > 1.0f)
-                {
+                //else if (Random.Range(0.0f, 4.0f) > 1.0f)
+                //{
                     //objectQueue.Enqueue((GameObject)Instantiate(plat4d));
-                    GameObject platClone = Instantiate(plat4d);
-                    platClone.transform.SetParent(parentGameObject.transform);
-                    objectQueue.Enqueue(platClone);
-                    currentTimers++;
-                    timerSpacingCounter = 0;
-                }
-                else
-                {
+                //    GameObject platClone = Instantiate(plat4d);
+                //    platClone.transform.SetParent(parentGameObject.transform);
+                //    objectQueue.Enqueue(platClone);
+                //    currentTimers++;
+                //    timerSpacingCounter = 0;
+                //}
+                //else
+                //{
                     //objectQueue.Enqueue((GameObject)Instantiate(plat4b));
-                    GameObject platClone = Instantiate(plat4b);
-                    platClone.transform.SetParent(parentGameObject.transform);
-                    objectQueue.Enqueue(platClone);
-                    currentTimers++;
-                    timerSpacingCounter = 0;
-                }
+                //    GameObject platClone = Instantiate(plat4b);
+                //    platClone.transform.SetParent(parentGameObject.transform);
+                //    objectQueue.Enqueue(platClone);
+                //    currentTimers++;
+                //    timerSpacingCounter = 0;
+                //}
                 
             }
-            else if (randomNumber <= 70f)
-            {
+            //else if (randomNumber <= 70f)
+            //{
                 //objectQueue.Enqueue((GameObject)Instantiate(plat5));
-                GameObject platClone = Instantiate(plat5);
-                platClone.transform.SetParent(parentGameObject.transform);
-                objectQueue.Enqueue(platClone);
-            }
-            else if (randomNumber <= 82f)
-            {
+            //    GameObject platClone = Instantiate(plat5);
+            //    platClone.transform.SetParent(parentGameObject.transform);
+            //    objectQueue.Enqueue(platClone);
+            //}
+            //else if (randomNumber <= 82f)
+            //{
                 //objectQueue.Enqueue((GameObject)Instantiate(plat8));
-                GameObject platClone = Instantiate(plat8);
-                platClone.transform.SetParent(parentGameObject.transform);
-                objectQueue.Enqueue(platClone);
-            }
-            else if (randomNumber <= 94f)
-            {
+            //    GameObject platClone = Instantiate(plat8);
+            //    platClone.transform.SetParent(parentGameObject.transform);
+            //    objectQueue.Enqueue(platClone);
+            //}
+            //else if (randomNumber <= 94f)
+            //{
                 //objectQueue.Enqueue((GameObject)Instantiate(plat9));
-                GameObject platClone = Instantiate(plat9);
-                platClone.transform.SetParent(parentGameObject.transform);
-                objectQueue.Enqueue(platClone);
-            }
-            else if (randomNumber <= 106f)
-            {
+            //    GameObject platClone = Instantiate(plat9);
+            //    platClone.transform.SetParent(parentGameObject.transform);
+            //    objectQueue.Enqueue(platClone);
+            //}
+            //else if (randomNumber <= 106f)
+            //{
                 //objectQueue.Enqueue((GameObject)Instantiate(plat10));
-                GameObject platClone = Instantiate(plat10);
-                platClone.transform.SetParent(parentGameObject.transform);
-                objectQueue.Enqueue(platClone);
-            }
+            //    GameObject platClone = Instantiate(plat10);
+            //    platClone.transform.SetParent(parentGameObject.transform);
+            //    objectQueue.Enqueue(platClone);
+            //}
             else
             {
                 //objectQueue.Enqueue((GameObject)Instantiate(plat3));

@@ -23,6 +23,11 @@ public class BigModeController : MonoBehaviour
     [SerializeField] TimerManager timer;
     [SerializeField] GameObject background;
     [SerializeField] GameObject DestructionPrefab;
+    [SerializeField] GameObject FlyExplosion;
+    [SerializeField] GameObject FlyBushLeaves;
+    [SerializeField] GameObject FireFlyExplosion;
+    [SerializeField] GameObject SlantPlatGibs;
+    [SerializeField] GameObject HorizPlatGibs;
     [SerializeField] AudioClip explode;
     //AudioSource audioSource;
 
@@ -101,26 +106,88 @@ public class BigModeController : MonoBehaviour
         if (collision.gameObject.layer != 9 && collision.gameObject.layer != 3 && collision.gameObject.layer != 8)
         {
             Debug.Log("rolled over: " + collision.gameObject);
-            Instantiate(DestructionPrefab, collision.gameObject.transform.position, Quaternion.identity);
+            //Instantiate(DestructionPrefab, collision.gameObject.transform.position, Quaternion.identity);
             //audioSource.PlayOneShot(explode, 0.5f);
             AudioManager.instance.PlayOneShot(FMODEvents.instance.explosion, this.transform.position);
+            if (collision.gameObject.GetComponent<Fly>() != null)
+            {
+                ScoreManager.instance.AddScore(1700);
+                Debug.Log("AddingFlyScore");
+                Instantiate(FlyExplosion, collision.gameObject.transform.position, Quaternion.identity);
+            }
+            else if (collision.gameObject.GetComponent<FlyBush>() != null)
+            {
+                ScoreManager.instance.AddScore(2600);
+                Debug.Log("AddingFlyBushScore");
+                Instantiate(FlyBushLeaves, collision.gameObject.transform.position, Quaternion.identity);
+            }
+            else if (collision.gameObject.GetComponent<FireFly>() != null)
+            {
+                ScoreManager.instance.AddScore(3700);
+                Debug.Log("AddingFireFlyScore");
+                Instantiate(FireFlyExplosion, collision.gameObject.transform.position, Quaternion.identity);
+            }
+            else if (collision.gameObject.GetComponent<LightningBolt>() != null)
+            {
+                ScoreManager.instance.AddScore(2100);
+                Debug.Log("AddingLightningBoltScore");
+            }
+            else if (collision.gameObject.GetComponent<SlantedPlat>() != null)
+            {
+                Instantiate(SlantPlatGibs, collision.gameObject.transform.position, Quaternion.identity);
+            }
+            else if (collision.gameObject.GetComponent<HorizontalPlat>() != null)
+            {
+                Instantiate(HorizPlatGibs, collision.gameObject.transform.position, Quaternion.identity);
+            }
             Destroy(collision.gameObject);
         }
         else if (collision.gameObject.layer == 8)
         {
             Debug.Log("Destroyed Timer");
-            timer.AddTime();
-            Instantiate(DestructionPrefab, collision.gameObject.transform.position, Quaternion.identity);
+            timer.AddTime(true);
+            //Instantiate(DestructionPrefab, collision.gameObject.transform.position, Quaternion.identity);
             AudioManager.instance.PlayOneShot(FMODEvents.instance.explosion, this.transform.position);
             Destroy(collision.gameObject);
         }
     }
 
-    void OnTriggerEnter2D(Collider2D other)
+    void OnTriggerEnter2D(Collider2D collision)
     {
-        Instantiate(DestructionPrefab, other.gameObject.transform.position, Quaternion.identity);
+        //Instantiate(DestructionPrefab, other.gameObject.transform.position, Quaternion.identity);
+        if (collision.gameObject.GetComponent<Fly>() != null)
+        {
+            ScoreManager.instance.AddScore(1700);
+            Debug.Log("AddingFlyScore");
+            Instantiate(FlyExplosion, collision.gameObject.transform.position, Quaternion.identity);
+        }
+        else if (collision.gameObject.GetComponent<FlyBush>() != null)
+        {
+            ScoreManager.instance.AddScore(2600);
+            Debug.Log("AddingFlyBushScore");
+            Instantiate(FlyBushLeaves, collision.gameObject.transform.position, Quaternion.identity);
+        }
+        else if (collision.gameObject.GetComponent<FireFly>() != null)
+        {
+            ScoreManager.instance.AddScore(3700);
+            Debug.Log("AddingFireFlyScore");
+            Instantiate(FireFlyExplosion, collision.gameObject.transform.position, Quaternion.identity);
+        }
+        else if (collision.gameObject.GetComponent<LightningBolt>() != null)
+        {
+            ScoreManager.instance.AddScore(2100);
+            Debug.Log("AddingLightningBoltScore");
+        }
+        else if (collision.gameObject.GetComponent<SlantedPlat>() != null)
+        {
+            Instantiate(SlantPlatGibs, collision.gameObject.transform.position, Quaternion.identity);
+        }
+        else if (collision.gameObject.GetComponent<HorizontalPlat>() != null)
+        {
+            Instantiate(HorizPlatGibs, collision.gameObject.transform.position, Quaternion.identity);
+        }
         AudioManager.instance.PlayOneShot(FMODEvents.instance.explosion, this.transform.position);
-        Destroy(other.gameObject);
+        Destroy(collision.gameObject);
     }
 
     bool IsGrounded()
