@@ -19,6 +19,7 @@ public class Hitscan_GrapplingGun : MonoBehaviour
     public Transform gunHolder;
     public Transform gunPivot;
     public Transform firePoint;
+    [SerializeField] Animator animator;
 
     [Header("Physics Ref:")]
     //public SpringJoint2D m_springJoint2D;
@@ -72,11 +73,13 @@ public class Hitscan_GrapplingGun : MonoBehaviour
             if (grappleRope.enabled)
             {
                 RotateGun(grapplePoint, false);
+                animator.SetBool("isFired", true);
             }
             else
             {
                 Vector2 mousePos = m_camera.ScreenToWorldPoint(Input.mousePosition);
                 RotateGun(mousePos, true);
+                animator.SetBool("isFired", false);
             }
 
             if (launchToPoint && grappleRope.isGrappling)
@@ -85,13 +88,14 @@ public class Hitscan_GrapplingGun : MonoBehaviour
                 {
                     Vector2 firePointDistnace = firePoint.position - gunHolder.localPosition;
                     Vector2 targetPos = grapplePoint - firePointDistnace;
-                    gunHolder.position = Vector2.Lerp(gunHolder.position, targetPos, Time.deltaTime * launchSpeed);
+                    gunHolder.position = Vector2.Lerp(gunHolder.position, targetPos, Time.fixedDeltaTime * launchSpeed);
                 }
             }
         }
         else if (Input.GetKeyUp(KeyCode.Mouse1) && TimerManager.instance.hasGameEnded == false && PauseMenu.instance.gameIsPaused == false)
         {
             grappleRope.enabled = false;
+            animator.SetBool("isFired", false);
             //m_springJoint2D.enabled = false;
             //m_rigidbody.gravityScale = 1;
         }
@@ -100,6 +104,7 @@ public class Hitscan_GrapplingGun : MonoBehaviour
             Vector2 mousePos = m_camera.ScreenToWorldPoint(Input.mousePosition);
             RotateGun(mousePos, true);
         }
+        
     }
 
     void RotateGun(Vector3 lookPoint, bool allowRotationOverTime)

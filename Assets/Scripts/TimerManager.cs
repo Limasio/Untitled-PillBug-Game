@@ -9,7 +9,7 @@ public class TimerManager : MonoBehaviour
 {
     [SerializeField] TMP_Text timerText;
     [SerializeField] float timeStart;
-    [SerializeField] float timeLeft;
+    public float timeLeft { get; private set; }
     [SerializeField] float timeBonus;
     [SerializeField] ScoreManager scoreManager;
 
@@ -26,6 +26,7 @@ public class TimerManager : MonoBehaviour
     [SerializeField] float timeBonus1min30sec;
     [SerializeField] float timeBonus3min;
     [SerializeField] float timeBonus5min;
+    [SerializeField] float timeBonus7min30sec;
     [SerializeField] GameObject music;
 
     public float globalTimer { get; private set; }
@@ -103,9 +104,13 @@ public class TimerManager : MonoBehaviour
             {
                 timeLeft += (timeBonus3min * 2);
             }
-            else
+            else if (globalTimer < 450)
             {
                 timeLeft += (timeBonus5min * 2);
+            }
+            else
+            {
+                timeLeft += (timeBonus7min30sec * 2);
             }
             //timeLeft += timeBonus;
             int min = Mathf.FloorToInt(timeLeft / 60);
@@ -130,9 +135,13 @@ public class TimerManager : MonoBehaviour
             {
                 timeLeft += timeBonus3min;
             }
-            else
+            else if (globalTimer < 450)
             {
                 timeLeft += timeBonus5min;
+            }
+            else
+            {
+                timeLeft += timeBonus7min30sec;
             }
             //timeLeft += timeBonus;
             int min = Mathf.FloorToInt(timeLeft / 60);

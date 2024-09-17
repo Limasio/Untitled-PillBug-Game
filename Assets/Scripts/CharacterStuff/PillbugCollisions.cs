@@ -11,6 +11,7 @@ public class PillbugCollisions : MonoBehaviour
     [SerializeField] float hitDelay;
     [SerializeField] GameObject FlyExplosion;
     [SerializeField] GameObject FireFlyExplosion;
+    [SerializeField] Animator animator;
     private float delayCounter;
     private bool canHit;
 
@@ -31,6 +32,20 @@ public class PillbugCollisions : MonoBehaviour
                 canHit = true;
             }
         }
+        if (TimerManager.instance.timeLeft <= 30.0f)
+        {
+            animator.SetBool("isFrantic", true);
+        }
+        else
+        {
+            animator.SetBool("isFrantic", false);
+        }
+        
+    }
+
+    private void FixedUpdate()
+    {
+        animator.SetFloat("angvelocity", Mathf.Abs(rigidbody.angularVelocity));
     }
 
     void OnTriggerEnter2D(Collider2D collision)

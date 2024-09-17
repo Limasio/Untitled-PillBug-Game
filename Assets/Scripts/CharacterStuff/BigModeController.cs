@@ -14,12 +14,14 @@ public class BigModeController : MonoBehaviour
     [SerializeField] float growTime;
     private float growTimeCounter;
     private float shrinkTimeCounter;
+    private bool isShrinking = false;
     [SerializeField] float shrinkTime;
     [SerializeField] PlayerModeManager playerMode;
     [SerializeField] CinemachineVirtualCamera camera;
     [SerializeField] float cameraMax;
     [SerializeField] float cameraXMax;
     [SerializeField] Vector2 persistentBoost;
+    [SerializeField] Vector2 shrinkBoost;
     [SerializeField] TimerManager timer;
     [SerializeField] GameObject background;
     [SerializeField] GameObject DestructionPrefab;
@@ -39,13 +41,17 @@ public class BigModeController : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
-        if (IsGrounded())
+        if (!isShrinking)//IsGrounded())
         {
             // rigidbody.AddForce(rigidbody.velocity.normalized * boostForce);
             rigidbody.AddForce(persistentBoost);
             // Debug.Log("boosting");
+        }
+        else
+        {
+            rigidbody.AddForce(shrinkBoost);
         }
     }
     
@@ -67,7 +73,7 @@ public class BigModeController : MonoBehaviour
         {
             growTimeCounter += Time.deltaTime;
             transform.localScale = Vector3.Lerp(initialSize, new Vector3(growSize, growSize, growSize), growTimeCounter / growTime);
-            background.transform.localScale = Vector3.Lerp(initialBackgroundSize, new Vector3(1.5f, 1.5f, 1.5f), growTimeCounter / growTime);
+            background.transform.localScale = Vector3.Lerp(initialBackgroundSize, new Vector3(2.5f, 2.5f, 2.5f), growTimeCounter / growTime);
             camera.m_Lens.OrthographicSize = Mathf.Lerp(initialCam, cameraMax, growTimeCounter / growTime);
             transposer.m_ScreenX = Mathf.Lerp(initialCamX, cameraXMax, growTimeCounter / growTime);
             yield return null;
@@ -77,12 +83,14 @@ public class BigModeController : MonoBehaviour
     public void ShrinkDisable()
     {
         Debug.Log("disabled");
+        isShrinking = false;
         shrinkTimeCounter = 0;
         StartCoroutine(Shrink());
     }
 
     IEnumerator Shrink()
     {
+        isShrinking = true;
         Vector3 initialSize = transform.localScale;
         Vector3 initialBackgroundSize = background.transform.localScale;
         float initialCam = camera.m_Lens.OrthographicSize;
@@ -97,6 +105,7 @@ public class BigModeController : MonoBehaviour
             transposer.m_ScreenX = Mathf.Lerp(initialCamX, 0.5f, shrinkTimeCounter / shrinkTime);
             yield return null;
         }
+        isShrinking = false;
         playerMode.SwapBack();
     }
 
@@ -145,7 +154,7 @@ public class BigModeController : MonoBehaviour
         else if (collision.gameObject.layer == 8)
         {
             Debug.Log("Destroyed Timer");
-            timer.AddTime(true);
+            timer.AddTime(false);
             //Instantiate(DestructionPrefab, collision.gameObject.transform.position, Quaternion.identity);
             AudioManager.instance.PlayOneShot(FMODEvents.instance.explosion, this.transform.position);
             Destroy(collision.gameObject);

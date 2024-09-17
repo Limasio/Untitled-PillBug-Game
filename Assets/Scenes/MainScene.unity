@@ -5260,9 +5260,9 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 1000
+  m_Mass: 750
   m_LinearDrag: 0
-  m_AngularDrag: 0.05
+  m_AngularDrag: 0
   m_GravityScale: 5
   m_Material: {fileID: 0}
   m_IncludeLayers:
@@ -5394,14 +5394,15 @@ MonoBehaviour:
   boostForce: 10
   groundCheckOffset: 0.2
   groundCheckRadius: 0.1
-  growSize: 10
+  growSize: 15
   growTime: 1.5
   shrinkTime: 1.5
   playerMode: {fileID: 381532783}
   camera: {fileID: 113172042}
-  cameraMax: 18
+  cameraMax: 27
   cameraXMax: 0.1
-  persistentBoost: {x: 5000, y: 2000}
+  persistentBoost: {x: 20000, y: 2500}
+  shrinkBoost: {x: 20000, y: 40000}
   timer: {fileID: 825929992}
   background: {fileID: 107452887}
   DestructionPrefab: {fileID: 3549940481609144435, guid: 476efeb4ece8af44a9e964405f392236, type: 3}
@@ -6256,8 +6257,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   timerText: {fileID: 825929993}
-  timeStart: 60
-  timeLeft: 0
+  timeStart: 90
   timeBonus: 30
   scoreManager: {fileID: 1703275357}
   GameOverPanel: {fileID: 514571178}
@@ -6267,6 +6267,7 @@ MonoBehaviour:
   timeBonus1min30sec: 25
   timeBonus3min: 22.5
   timeBonus5min: 20
+  timeBonus7min30sec: 16
   music: {fileID: 0}
 --- !u!114 &825929993
 MonoBehaviour:
@@ -6590,6 +6591,63 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 861137445}
   m_CullTransparentMesh: 1
+--- !u!1001 &861490789
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 21668592147551669, guid: e276fd3e2661ffa4aa87cfcb6c869b1c, type: 3}
+      propertyPath: m_Name
+      value: TimerExtender
+      objectReference: {fileID: 0}
+    - target: {fileID: 5789972450499615539, guid: e276fd3e2661ffa4aa87cfcb6c869b1c, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 16.53
+      objectReference: {fileID: 0}
+    - target: {fileID: 5789972450499615539, guid: e276fd3e2661ffa4aa87cfcb6c869b1c, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 11.45
+      objectReference: {fileID: 0}
+    - target: {fileID: 5789972450499615539, guid: e276fd3e2661ffa4aa87cfcb6c869b1c, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5789972450499615539, guid: e276fd3e2661ffa4aa87cfcb6c869b1c, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5789972450499615539, guid: e276fd3e2661ffa4aa87cfcb6c869b1c, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5789972450499615539, guid: e276fd3e2661ffa4aa87cfcb6c869b1c, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5789972450499615539, guid: e276fd3e2661ffa4aa87cfcb6c869b1c, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5789972450499615539, guid: e276fd3e2661ffa4aa87cfcb6c869b1c, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5789972450499615539, guid: e276fd3e2661ffa4aa87cfcb6c869b1c, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5789972450499615539, guid: e276fd3e2661ffa4aa87cfcb6c869b1c, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: e276fd3e2661ffa4aa87cfcb6c869b1c, type: 3}
 --- !u!1 &862714619
 GameObject:
   m_ObjectHideFlags: 0
@@ -7264,6 +7322,7 @@ MonoBehaviour:
   hitDelay: 1
   FlyExplosion: {fileID: 81312865823573274, guid: 04ab7613b82500648b8a3504778e664f, type: 3}
   FireFlyExplosion: {fileID: 169553758643738893, guid: df220c4964e5dd94b8a5960fb7137bdd, type: 3}
+  animator: {fileID: 1027186444}
 --- !u!212 &1027186446
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -9145,6 +9204,7 @@ MonoBehaviour:
   gunHolder: {fileID: 1027186435}
   gunPivot: {fileID: 307558495}
   firePoint: {fileID: 94806965}
+  animator: {fileID: 1438344779}
   m_rigidbody: {fileID: 1027186439}
   rotateOverTime: 1
   rotationSpeed: 35.4
@@ -12469,3 +12529,4 @@ SceneRoots:
   - {fileID: 113172043}
   - {fileID: 278129603}
   - {fileID: 676708827}
+  - {fileID: 861490789}

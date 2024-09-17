@@ -19,6 +19,8 @@ public class GameManagingScript : MonoBehaviour
     {
         //pauseMenu = pauseScreen.GetComponent<PauseMenu>();
         Time.timeScale = 1f;
+        Time.fixedDeltaTime = 0.02f;
+        SceneManager.UnloadSceneAsync("LoadingScene");
     }
 
     // Start is called before the first frame update
