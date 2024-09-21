@@ -12,8 +12,13 @@ public class PillbugCollisions : MonoBehaviour
     [SerializeField] GameObject FlyExplosion;
     [SerializeField] GameObject FireFlyExplosion;
     [SerializeField] Animator animator;
+
+    [SerializeField] int flashNum;
+    [SerializeField] float flashDelay;
+    [SerializeField] SpriteRenderer spriteRenderer;
     private float delayCounter;
     private bool canHit;
+    private int angVelocityCounter;
 
     // Start is called before the first frame update
     void Start()
@@ -40,12 +45,28 @@ public class PillbugCollisions : MonoBehaviour
         {
             animator.SetBool("isFrantic", false);
         }
-        
+
     }
 
     private void FixedUpdate()
     {
         animator.SetFloat("angvelocity", Mathf.Abs(rigidbody.angularVelocity));
+        if (Mathf.Abs(rigidbody.angularVelocity) > 600f)
+        {
+            angVelocityCounter += 1;
+        }
+        else
+        {
+            angVelocityCounter = 0;
+        }
+        if (angVelocityCounter >= 10)
+        {
+            animator.SetBool("Spinning", true);
+        }
+        else
+        {
+            animator.SetBool("Spinning", false);
+        }
     }
 
     void OnTriggerEnter2D(Collider2D collision)
@@ -74,13 +95,26 @@ public class PillbugCollisions : MonoBehaviour
                 ScoreManager.instance.AddScore(2100);
                 Debug.Log("AddingLightningBoltScore");
             }
+            StartCoroutine(InvFlash(flashDelay, flashNum, spriteRenderer));
             Destroy(collision.gameObject);
             AudioManager.instance.PlayOneShot(FMODEvents.instance.playerHurt, this.transform.position);
             rigidbody.velocity = new Vector2(0f, 0f);
+            rigidbody.angularVelocity = 100f;
             rigidbody.AddForce(knockback, ForceMode2D.Impulse);
             timer.LoseTime(timePenalty);
             canHit = false;
             delayCounter = 0;
+        }
+    }
+
+    IEnumerator InvFlash(float delay, int flashes, SpriteRenderer renderer)
+    {
+        for (int i = 0; i < flashes; i++)
+        {
+            renderer.enabled = false;
+            yield return new WaitForSeconds(delay);
+            renderer.enabled = true;
+            yield return new WaitForSeconds(delay);
         }
     }
 }

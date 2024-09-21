@@ -169,7 +169,7 @@ public class PlatformManager : MonoBehaviour
         if(objectQueue.Peek().transform.localPosition.x + recycleOffset < player.transform.localPosition.x || objectQueue.Peek().transform.localPosition.x + recycleOffset < player2.transform.localPosition.x) //Checking against total distance traveled by player
         {
             Recycle2();
-            Debug.Log("Ran Recycle2");
+            //Debug.Log("Ran Recycle2");
         }
     }
 

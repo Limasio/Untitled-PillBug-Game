@@ -34,6 +34,9 @@ public class Hitscan_GrapplingGun : MonoBehaviour
     [SerializeField] private bool hasMaxDistance = false;
     [SerializeField] private float maxDistnace = 20;
 
+    private GameObject grappledGO;
+    private Vector2 grapplePointOffset;
+
     private enum LaunchType
     {
         Transform_Launch,
@@ -55,9 +58,12 @@ public class Hitscan_GrapplingGun : MonoBehaviour
 
     [SerializeField] LayerMask targetLayers;
 
+    private bool enableGrapplePhysics;
+
     private void Start()
     {
         grappleRope.enabled = false;
+        enableGrapplePhysics = false;
         //m_springJoint2D.enabled = false;
 
     }
@@ -70,6 +76,15 @@ public class Hitscan_GrapplingGun : MonoBehaviour
         }
         else if (Input.GetKey(KeyCode.Mouse1) && TimerManager.instance.hasGameEnded == false && PauseMenu.instance.gameIsPaused == false)
         {
+            if(grappledGO == null)
+            {
+                DisableGrapple();
+            }
+            else if((grapplePointOffset + grapplePoint) != new Vector2(grappledGO.transform.position.x, grappledGO.transform.position.y))
+            {
+                grapplePoint = (new Vector2(grappledGO.transform.position.x, grappledGO.transform.position.y) - grapplePointOffset);
+            }
+            
             if (grappleRope.enabled)
             {
                 RotateGun(grapplePoint, false);
@@ -94,8 +109,7 @@ public class Hitscan_GrapplingGun : MonoBehaviour
         }
         else if (Input.GetKeyUp(KeyCode.Mouse1) && TimerManager.instance.hasGameEnded == false && PauseMenu.instance.gameIsPaused == false)
         {
-            grappleRope.enabled = false;
-            animator.SetBool("isFired", false);
+            DisableGrapple();
             //m_springJoint2D.enabled = false;
             //m_rigidbody.gravityScale = 1;
         }
@@ -114,7 +128,7 @@ public class Hitscan_GrapplingGun : MonoBehaviour
         float angle = Mathf.Atan2(distanceVector.y, distanceVector.x) * Mathf.Rad2Deg;
         if (rotateOverTime && allowRotationOverTime)
         {
-            gunPivot.rotation = Quaternion.Lerp(gunPivot.rotation, Quaternion.AngleAxis(angle, Vector3.forward), Time.deltaTime * rotationSpeed);
+            gunPivot.rotation = Quaternion.Slerp(gunPivot.rotation, Quaternion.AngleAxis(angle, Vector3.forward), rotationSpeed);
         }
         else
         {
@@ -146,15 +160,33 @@ public class Hitscan_GrapplingGun : MonoBehaviour
                     grapplePoint = _hit.point;
                     grappleDistanceVector = grapplePoint - (Vector2)gunPivot.position;
                     grappleRope.enabled = true;
+                    grappledGO = _hit.collider.gameObject;
+                    grapplePointOffset = new Vector2 (grappledGO.transform.position.x, grappledGO.transform.position.y) - grapplePoint;
                     AudioManager.instance.PlayOneShot(FMODEvents.instance.grapple, this.transform.position);
             }
         }
     }
 
+    private void FixedUpdate()
+    {
+        if (enableGrapplePhysics)
+        {
+            m_rigidbody.AddForce((grapplePoint - (Vector2)gunHolder.position).normalized * grappleForce);
+        }
+    }
+
+    public void DisableGrapple()
+    {
+        grappleRope.enabled = false;
+        animator.SetBool("isFired", false);
+        enableGrapplePhysics = false;
+    }
+
     public void Grapple()
     {
         // m_rigidbody.AddForce((grapplePoint - (Vector2)gunHolder.position).normalized * grappleForce);
-        StartCoroutine(applyGrapplingForce());
+        enableGrapplePhysics = true;
+        //StartCoroutine(applyGrapplingForce());
     }
 
     protected IEnumerator applyGrapplingForce()

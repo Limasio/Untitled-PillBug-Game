@@ -6,6 +6,7 @@ using Cinemachine;
 public class BigModeController : MonoBehaviour
 {
     [SerializeField] Rigidbody2D rigidbody;
+    [SerializeField] Rigidbody rigidbody3D;
     [SerializeField] Collider2D collider;
     [SerializeField] float boostForce;
     [SerializeField] float groundCheckOffset;
@@ -45,13 +46,13 @@ public class BigModeController : MonoBehaviour
     {
         if (!isShrinking)//IsGrounded())
         {
-            // rigidbody.AddForce(rigidbody.velocity.normalized * boostForce);
             rigidbody.AddForce(persistentBoost);
-            // Debug.Log("boosting");
+            //rigidbody3D.AddForce(persistentBoost);
         }
         else
         {
             rigidbody.AddForce(shrinkBoost);
+            //rigidbody3D.AddForce(shrinkBoost);
         }
     }
     

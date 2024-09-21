@@ -93,7 +93,7 @@ public class AudioManager : MonoBehaviour
         eventEmitters.Add(emitter);
         foreach (var x in eventEmitters)
         {
-            Debug.Log(x.ToString());
+            //Debug.Log(x.ToString());
         }
         UnityEngine.Debug.Log("imma kms");
         return emitter;

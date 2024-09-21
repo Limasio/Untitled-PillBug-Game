@@ -12,6 +12,7 @@ public class PlayerModeManager : MonoBehaviour
     [SerializeField] GameObject bigMode;
     [SerializeField] BigModeController bigController;
     private Rigidbody2D bigModeRigidbody;
+    private Rigidbody bigModeRigidbody3D;
     [SerializeField] GameObject cameraObject;
     private CinemachineVirtualCamera camera; 
     [SerializeField] bool isBigMode;
@@ -101,7 +102,8 @@ public class PlayerModeManager : MonoBehaviour
         bigModeRigidbody.velocity = new Vector3(0f, 0f, 0f);
         bigModeRigidbody.angularVelocity = 0f;
         camera.Follow = bigMode.transform;
-        if (grapplingGun.grappleRope.enabled) grapplingGun.grappleRope.enabled = false;
+        if (grapplingGun.grappleRope.enabled) grapplingGun.DisableGrapple();
+        pillbug.GetComponent<SpriteRenderer>().enabled = true;
         pillbug.SetActive(false);
         isBigMode = true;
         bigModeRigidbody.AddForce(bigModeInitialBoost, ForceMode2D.Impulse);
