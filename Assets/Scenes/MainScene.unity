@@ -5339,8 +5339,8 @@ MonoBehaviour:
   camera: {fileID: 113172042}
   cameraMax: 27
   cameraXMax: 0.1
-  persistentBoost: {x: 20000, y: 2500}
-  shrinkBoost: {x: 20000, y: 40000}
+  persistentBoost: {x: 35000, y: 5000}
+  shrinkBoost: {x: 35000, y: 37500}
   timer: {fileID: 825929992}
   background: {fileID: 107452887}
   DestructionPrefab: {fileID: 3549940481609144435, guid: 476efeb4ece8af44a9e964405f392236, type: 3}
@@ -7123,7 +7123,7 @@ MonoBehaviour:
   onGunReload:
     m_PersistentCalls:
       m_Calls: []
-  fireCooldown: 0.6
+  fireCooldown: 0.3
   altFireCooldown: 0.25
   reloadTime: 1
   clipSize: 2
