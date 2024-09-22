@@ -38,10 +38,12 @@ public class GameManagingScript : MonoBehaviour
         if (pauseMenu.gameIsPaused)
         {
             gameIsPaused = true;
+            Cursor.lockState = CursorLockMode.None;
         }
         else
         {
             gameIsPaused = false;
+            Cursor.lockState = CursorLockMode.Confined;
         }
     }
 

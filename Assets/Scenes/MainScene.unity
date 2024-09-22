@@ -4472,9 +4472,9 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 808385719
-  m_SortingLayer: 2
-  m_SortingOrder: 0
+  m_SortingLayerID: 1274660083
+  m_SortingLayer: 1
+  m_SortingOrder: 30
   m_Sprite: {fileID: 21300000, guid: 8f5cae11850ca624b83edbba06af53fe, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -5285,9 +5285,9 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingLayerID: 808385719
+  m_SortingLayer: 2
+  m_SortingOrder: 2
   m_Sprite: {fileID: 21300000, guid: 539bb9fda0b6f214f8b0ab8cb78558a3, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -5345,7 +5345,7 @@ MonoBehaviour:
   background: {fileID: 107452887}
   DestructionPrefab: {fileID: 3549940481609144435, guid: 476efeb4ece8af44a9e964405f392236, type: 3}
   FlyExplosion: {fileID: 81312865823573274, guid: 04ab7613b82500648b8a3504778e664f, type: 3}
-  FlyBushLeaves: {fileID: 3549940481609144435, guid: 672a4d3180da1bc47b6279ea3b8ffdb6, type: 3}
+  FlyBushLeaves: {fileID: 3549940481609144435, guid: 3d05363271c010748b96cc87591cf099, type: 3}
   FireFlyExplosion: {fileID: 169553758643738893, guid: df220c4964e5dd94b8a5960fb7137bdd, type: 3}
   SlantPlatGibs: {fileID: 6510472082100709490, guid: 0e6af9daa60339441b0fe5b089c485df, type: 3}
   HorizPlatGibs: {fileID: 6510472082100709490, guid: bb54e5cc27e27544fa9d75635dc45e91, type: 3}
@@ -8847,6 +8847,109 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &1414211888
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1414211889}
+  - component: {fileID: 1414211891}
+  - component: {fileID: 1414211890}
+  m_Layer: 0
+  m_Name: radar
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1414211889
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1414211888}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 5, y: -0.048, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1780594927}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1414211890
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1414211888}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 634f0608e733a2c4c8767307cefa7e7a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 1027186433}
+  player2: {fileID: 620767992}
+  wall: {fileID: 514889900}
+  radarPivot: {fileID: 1780594927}
+  spriteRenderer: {fileID: 1414211891}
+  rotationSpeed: 0.05
+--- !u!212 &1414211891
+SpriteRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1414211888}
+  m_Enabled: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 0
+  m_RayTraceProcedural: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 0
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 808385719
+  m_SortingLayer: 2
+  m_SortingOrder: 1
+  m_Sprite: {fileID: 21300000, guid: f26d4f74203b6514e9ec0aa745128a3f, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_FlipX: 0
+  m_FlipY: 0
+  m_DrawMode: 0
+  m_Size: {x: 0.42, y: 0.42}
+  m_AdaptiveModeThreshold: 0.5
+  m_SpriteTileMode: 0
+  m_WasSpriteAssigned: 1
+  m_MaskInteraction: 0
+  m_SpriteSortPoint: 0
 --- !u!1 &1414837470
 GameObject:
   m_ObjectHideFlags: 0
@@ -9044,7 +9147,7 @@ MonoBehaviour:
   rotateOverTime: 1
   rotationSpeed: 0.3
   hasMaxDistance: 1
-  maxDistnace: 20
+  maxDistnace: 40
   launchToPoint: 0
   launchType: 1
   launchSpeed: 2
@@ -10501,6 +10604,38 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   delay: 0
   Arrow: {fileID: 0}
+--- !u!1 &1780594926
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1780594927}
+  m_Layer: 3
+  m_Name: RadarPivot
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1780594927
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1780594926}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -55, y: -0.6, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 1414211889}
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1788274023
 GameObject:
   m_ObjectHideFlags: 0
@@ -10772,26 +10907,44 @@ MonoBehaviour:
     - serializedVersion: 3
       time: 0
       value: 0
-      inSlope: 0.342114
-      outSlope: 0.342114
+      inSlope: 0.6511925
+      outSlope: 0.6511925
       tangentMode: 34
       weightedMode: 0
       inWeight: 0
       outWeight: 0.33333334
     - serializedVersion: 3
-      time: 0.20671934
-      value: 0.07072158
-      inSlope: 0.0687243
-      outSlope: 0.0687243
+      time: 0.1487197
+      value: 0.09684515
+      inSlope: -0.09780409
+      outSlope: -0.09780409
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.46321297
+    - serializedVersion: 3
+      time: 0.35733247
+      value: -0.08809808
+      inSlope: -0.04823223
+      outSlope: -0.04823223
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.16694504
+    - serializedVersion: 3
+      time: 0.6209802
+      value: 0.02663131
+      inSlope: 0.0978796
+      outSlope: 0.0978796
       tangentMode: 34
       weightedMode: 0
       inWeight: 0.33333334
       outWeight: 0.33333334
     - serializedVersion: 3
       time: 0.7900803
-      value: -0.04867223
-      inSlope: 0.013597891
-      outSlope: 0.013597891
+      value: -0.013851672
+      inSlope: -0.08670844
+      outSlope: -0.08670844
       tangentMode: 34
       weightedMode: 0
       inWeight: 0.33333334
@@ -10799,8 +10952,8 @@ MonoBehaviour:
     - serializedVersion: 3
       time: 1
       value: 0
-      inSlope: 0.23186119
-      outSlope: 0.23186119
+      inSlope: 0.06598558
+      outSlope: 0.06598558
       tangentMode: 34
       weightedMode: 0
       inWeight: 0.33333334
@@ -10808,7 +10961,7 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  StartWaveSize: 2
+  StartWaveSize: 4
   ropeProgressionCurve:
     serializedVersion: 2
     m_Curve:
@@ -10931,7 +11084,7 @@ LineRenderer:
     numCornerVertices: 1
     numCapVertices: 10
     alignment: 0
-    textureMode: 0
+    textureMode: 2
     textureScale: {x: 1, y: 1}
     shadowBias: 0.5
     generateLightingData: 0
@@ -12364,4 +12517,5 @@ SceneRoots:
   - {fileID: 113172043}
   - {fileID: 278129603}
   - {fileID: 676708827}
+  - {fileID: 1780594927}
   - {fileID: 861490789}

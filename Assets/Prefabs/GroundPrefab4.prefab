@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 4410015595417283173}
   - component: {fileID: 7826019773048624892}
   - component: {fileID: 2342722929293268192}
+  - component: {fileID: 6098201775784682244}
   m_Layer: 9
   m_Name: GroundPrefab4
   m_TagString: Untagged
@@ -219,7 +220,7 @@ Rigidbody2D:
     m_Bits: 0
   m_Interpolate: 0
   m_SleepingMode: 1
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
   m_Constraints: 7
 --- !u!60 &2342722929293268192
 PolygonCollider2D:
@@ -228,7 +229,7 @@ PolygonCollider2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2929605834343793388}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Density: 1
   m_Material: {fileID: 0}
   m_IncludeLayers:
@@ -294,3 +295,70 @@ PolygonCollider2D:
       - {x: 0, y: -50}
       - {x: 0.00004559271, y: -0.004814368}
   m_UseDelaunayMesh: 0
+--- !u!68 &6098201775784682244
+EdgeCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2929605834343793388}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 1.53}
+  m_EdgeRadius: 0
+  m_Points:
+  - {x: 0.00004559271, y: -0.004814368}
+  - {x: 3.1156557, y: -0.35775423}
+  - {x: 4.6004505, y: -0.52095777}
+  - {x: 6.3364673, y: -0.705777}
+  - {x: 8.246141, y: -0.9012099}
+  - {x: 10.287355, y: -1.1001508}
+  - {x: 12.476577, y: -1.3004608}
+  - {x: 14.595919, y: -1.4801322}
+  - {x: 16.779032, y: -1.6469607}
+  - {x: 18.92521, y: -1.7888732}
+  - {x: 20.992342, y: -1.8987628}
+  - {x: 22.938309, y: -1.9695237}
+  - {x: 24.720993, y: -1.9940481}
+  - {x: 26.508602, y: -1.9677526}
+  - {x: 28.456703, y: -1.8955302}
+  - {x: 30.524897, y: -1.7844753}
+  - {x: 32.67277, y: -1.6416813}
+  - {x: 34.859917, y: -1.474241}
+  - {x: 37.045937, y: -1.2892491}
+  - {x: 39.19038, y: -1.0937961}
+  - {x: 41.252888, y: -0.89497715}
+  - {x: 43.760868, y: -0.64100695}
+  - {x: 48.92133, y: -0.098639496}
+  - {x: 49.643253, y: -0.028581146}
+  - {x: 50, y: 0}
+  - {x: 50, y: -50}
+  - {x: 0, y: -50}
+  - {x: 0.00004559271, y: -0.004814368}
+  m_AdjacentStartPoint: {x: 0, y: 0}
+  m_AdjacentEndPoint: {x: 0, y: 0}
+  m_UseAdjacentStartPoint: 0
+  m_UseAdjacentEndPoint: 0
