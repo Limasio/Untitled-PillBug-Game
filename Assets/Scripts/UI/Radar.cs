@@ -98,7 +98,7 @@ public class Radar : MonoBehaviour
             tmp.a = 1f;
             spriteRenderer.color = tmp;
         }
-        Debug.Log("Closest: " + closest);
+        //Debug.Log("Closest: " + closest);
         return closestObject;
     }
 

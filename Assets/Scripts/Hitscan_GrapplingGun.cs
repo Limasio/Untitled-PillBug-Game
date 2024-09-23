@@ -92,7 +92,8 @@ public class Hitscan_GrapplingGun : MonoBehaviour
             }
             else
             {
-                Vector2 mousePos = m_camera.ScreenToWorldPoint(Input.mousePosition);
+                //Vector2 mousePos = m_camera.ScreenToWorldPoint(Input.mousePosition);
+                Vector2 mousePos = m_camera.ScreenToWorldPoint(VirtualCursorTest.instance.virtualMousePosition);
                 RotateGun(mousePos, true);
                 animator.SetBool("isFired", false);
             }
@@ -115,7 +116,8 @@ public class Hitscan_GrapplingGun : MonoBehaviour
         }
         else if (TimerManager.instance.hasGameEnded == false && PauseMenu.instance.gameIsPaused == false)
         {
-            Vector2 mousePos = m_camera.ScreenToWorldPoint(Input.mousePosition);
+            //Vector2 mousePos = m_camera.ScreenToWorldPoint(Input.mousePosition);
+            Vector2 mousePos = m_camera.ScreenToWorldPoint(VirtualCursorTest.instance.virtualMousePosition);
             RotateGun(mousePos, true);
         }
         
@@ -138,7 +140,8 @@ public class Hitscan_GrapplingGun : MonoBehaviour
 
     void SetGrapplePoint()
     {
-        Vector2 distanceVector = m_camera.ScreenToWorldPoint(Input.mousePosition) - gunPivot.position;
+        //Vector2 distanceVector = m_camera.ScreenToWorldPoint(Input.mousePosition) - gunPivot.position;
+        Vector2 distanceVector = m_camera.ScreenToWorldPoint(VirtualCursorTest.instance.virtualMousePosition) - gunPivot.position;
         // if (Physics2D.Raycast(firePoint.position, distanceVector.normalized))
         // {
         //     RaycastHit2D _hit = Physics2D.Raycast(firePoint.position, distanceVector.normalized);

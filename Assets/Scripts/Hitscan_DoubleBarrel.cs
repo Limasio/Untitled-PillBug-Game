@@ -43,7 +43,8 @@ public class Hitscan_DoubleBarrel : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        mousePos = m_camera.ScreenToWorldPoint(Input.mousePosition);
+        //mousePos = m_camera.ScreenToWorldPoint(Input.mousePosition);
+        mousePos = m_camera.ScreenToWorldPoint(VirtualCursorTest.instance.virtualMousePosition);
     }
 
     public void Shoot()

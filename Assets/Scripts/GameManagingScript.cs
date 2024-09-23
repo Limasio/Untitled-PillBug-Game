@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Audio;
+using UnityEngine.InputSystem.UI;
 using UnityEngine.SceneManagement;
 
 public class GameManagingScript : MonoBehaviour
@@ -9,6 +10,7 @@ public class GameManagingScript : MonoBehaviour
     public GameObject pauseScreen;
     [SerializeField] private PauseMenu pauseMenu;
     [SerializeField] ScoreManager scoreManager;
+    [SerializeField] GameObject virtualCursor;
 
     public bool gameIsPaused;
 
@@ -38,12 +40,16 @@ public class GameManagingScript : MonoBehaviour
         if (pauseMenu.gameIsPaused)
         {
             gameIsPaused = true;
+            virtualCursor.GetComponent<VirtualCursorTest>().enabled = false;
+            virtualCursor.GetComponent<VirtualMouseInput>().enabled = false;
             Cursor.lockState = CursorLockMode.None;
         }
         else
         {
             gameIsPaused = false;
-            Cursor.lockState = CursorLockMode.Confined;
+            virtualCursor.GetComponent<VirtualCursorTest>().enabled = true;
+            virtualCursor.GetComponent<VirtualMouseInput>().enabled = true;
+            Cursor.lockState = CursorLockMode.Locked;
         }
     }
 

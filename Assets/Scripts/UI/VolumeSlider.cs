@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem.UI;
 using UnityEngine.UI;
 
 public class VolumeSlider : MonoBehaviour
@@ -9,16 +10,19 @@ public class VolumeSlider : MonoBehaviour
     {
         MASTER,
         MUSIC,
-        SFX
+        SFX,
+        MOUSESENS
     }
     [Header("Type")]
     [SerializeField] private VolumeType volumeType;
+    [SerializeField] private VirtualMouseInput virtualCursor;
 
     private Slider volumeSlider;
 
     string volumeMaster = "VolumeMaster";
     string volumeMusic = "VolumeMusic";
     string volumeSFX = "VolumeSFX";
+    string mouseSens = "MouseSens";
 
     private void Awake()
     {
@@ -44,6 +48,10 @@ public class VolumeSlider : MonoBehaviour
                 AudioManager.instance.SFXVolume = PlayerPrefs.GetFloat(volumeSFX);
                 volumeSlider.value = AudioManager.instance.SFXVolume;
                 break;
+            case VolumeType.MOUSESENS:
+                virtualCursor.cursorSpeed = PlayerPrefs.GetFloat(mouseSens);
+                volumeSlider.value = virtualCursor.cursorSpeed;
+                break;
             default:
                 Debug.LogWarning("Volume Type Not Supported: " + volumeType);
                 break;
@@ -63,6 +71,9 @@ public class VolumeSlider : MonoBehaviour
                 break;
             case VolumeType.SFX:
                 volumeSlider.value = AudioManager.instance.SFXVolume;
+                break;
+            case VolumeType.MOUSESENS:
+                volumeSlider.value = virtualCursor.cursorSpeed;
                 break;
             default:
                 Debug.LogWarning("Volume Type Not Supported: " + volumeType);
@@ -87,6 +98,11 @@ public class VolumeSlider : MonoBehaviour
             case VolumeType.SFX:
                 AudioManager.instance.SFXVolume = volumeSlider.value;
                 PlayerPrefs.SetFloat(volumeSFX, AudioManager.instance.SFXVolume);
+                PlayerPrefs.Save();
+                break;
+            case VolumeType.MOUSESENS:
+                virtualCursor.cursorSpeed = volumeSlider.value;
+                PlayerPrefs.SetFloat(mouseSens, virtualCursor.cursorSpeed);
                 PlayerPrefs.Save();
                 break;
             default:

@@ -95,7 +95,7 @@ public class AudioManager : MonoBehaviour
         {
             //Debug.Log(x.ToString());
         }
-        UnityEngine.Debug.Log("imma kms");
+        //UnityEngine.Debug.Log("imma kms");
         return emitter;
     }
 
