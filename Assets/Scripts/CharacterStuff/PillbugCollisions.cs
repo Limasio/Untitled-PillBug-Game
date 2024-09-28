@@ -71,7 +71,7 @@ public class PillbugCollisions : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D collision)
     {
-        if (canHit)
+        if (canHit && collision.gameObject.layer != 14)
         {
             if (collision.gameObject.GetComponent<Fly>() != null)
             {

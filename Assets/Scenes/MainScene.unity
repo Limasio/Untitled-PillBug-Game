@@ -5398,7 +5398,7 @@ GameObject:
   - component: {fileID: 620767998}
   - component: {fileID: 620768000}
   - component: {fileID: 620767999}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: BigMode
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5502,7 +5502,7 @@ MonoBehaviour:
   timer: {fileID: 825929992}
   background: {fileID: 107452887}
   DestructionPrefab: {fileID: 3549940481609144435, guid: 476efeb4ece8af44a9e964405f392236, type: 3}
-  FlyExplosion: {fileID: 81312865823573274, guid: 04ab7613b82500648b8a3504778e664f, type: 3}
+  FlyExplosion: {fileID: 3960834257006657716, guid: d10fa04cd373b6b45928cc6415f0cc0b, type: 3}
   FlyBushLeaves: {fileID: 3549940481609144435, guid: 3d05363271c010748b96cc87591cf099, type: 3}
   FireFlyExplosion: {fileID: 169553758643738893, guid: df220c4964e5dd94b8a5960fb7137bdd, type: 3}
   SlantPlatGibs: {fileID: 6510472082100709490, guid: 0e6af9daa60339441b0fe5b089c485df, type: 3}
@@ -7465,7 +7465,7 @@ MonoBehaviour:
   moder: {fileID: 381532783}
   grapplingGun: {fileID: 1438344778}
   DestructionPrefab: {fileID: 3549940481609144435, guid: 476efeb4ece8af44a9e964405f392236, type: 3}
-  FlyExplosion: {fileID: 81312865823573274, guid: 04ab7613b82500648b8a3504778e664f, type: 3}
+  FlyExplosion: {fileID: 3960834257006657716, guid: d10fa04cd373b6b45928cc6415f0cc0b, type: 3}
   FireFlyExplosion: {fileID: 169553758643738893, guid: df220c4964e5dd94b8a5960fb7137bdd, type: 3}
   FlyBushLeaves: {fileID: 3549940481609144435, guid: 672a4d3180da1bc47b6279ea3b8ffdb6, type: 3}
 --- !u!95 &1027186444
@@ -7506,7 +7506,7 @@ MonoBehaviour:
   rigidbody: {fileID: 1027186439}
   knockback: {x: -10, y: 10}
   hitDelay: 1
-  FlyExplosion: {fileID: 81312865823573274, guid: 04ab7613b82500648b8a3504778e664f, type: 3}
+  FlyExplosion: {fileID: 3960834257006657716, guid: d10fa04cd373b6b45928cc6415f0cc0b, type: 3}
   FireFlyExplosion: {fileID: 169553758643738893, guid: df220c4964e5dd94b8a5960fb7137bdd, type: 3}
   animator: {fileID: 1027186444}
   flashNum: 3
@@ -9547,7 +9547,7 @@ MonoBehaviour:
   grappleDistanceVector: {x: 0, y: 0}
   targetLayers:
     serializedVersion: 2
-    m_Bits: 3969
+    m_Bits: 20353
 --- !u!95 &1438344779
 Animator:
   serializedVersion: 5

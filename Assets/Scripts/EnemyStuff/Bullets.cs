@@ -7,6 +7,8 @@ public class Bullets : MonoBehaviour
     public float bulletLife;
     public float bulletSpeed;
     [SerializeField] float bulletRotation;
+    [SerializeField] bool customRotation;
+    [SerializeField] float bulletSpriteRotation;
     [SerializeField] bool inMainMenu;
     [SerializeField] float teleportOffset;
 
@@ -32,6 +34,12 @@ public class Bullets : MonoBehaviour
         if (timer > bulletLife) Destroy(this.gameObject);
         timer += Time.deltaTime;
         transform.position = Movement();
+        if (customRotation)
+        {
+            gameObject.transform.GetChild(0).gameObject.transform.rotation = Quaternion.Euler(transform.rotation.x, transform.rotation.y, bulletSpriteRotation);
+        }
+        
+        //transform.rotation = Quaternion.Euler(transform.rotation.x, transform.rotation.y, 180);
     }
 
 
@@ -39,8 +47,10 @@ public class Bullets : MonoBehaviour
     private Vector2 Movement()
     {
         float x = timer * bulletSpeed * transform.right.x;
+        //float x = timer * bulletSpeed * Vector2.right.x;
+        //float y = timer * bulletSpeed * Vector2.right.y;
         float y = timer * bulletSpeed * transform.right.y;
-        if((x+spawnPoint.x >= teleportOffset+spawnPoint.x) && inMainMenu && !teleportNeeded)
+        if ((x+spawnPoint.x >= teleportOffset+spawnPoint.x) && inMainMenu && !teleportNeeded)
         {
             //teleportNeeded = true;
             timer = 0f;
