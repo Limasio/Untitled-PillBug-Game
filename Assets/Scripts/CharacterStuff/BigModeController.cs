@@ -16,12 +16,13 @@ public class BigModeController : MonoBehaviour
     private float growTimeCounter;
     private float shrinkTimeCounter;
     private bool isShrinking = false;
+    private bool isGrowing = false;
     [SerializeField] float shrinkTime;
     [SerializeField] PlayerModeManager playerMode;
     [SerializeField] CinemachineVirtualCamera camera;
     [SerializeField] float cameraMax;
     [SerializeField] float cameraXMax;
-    [SerializeField] Vector2 persistentBoost;
+    [SerializeField] Vector2 growBoost;
     [SerializeField] Vector2 shrinkBoost;
     [SerializeField] TimerManager timer;
     [SerializeField] GameObject background;
@@ -44,12 +45,12 @@ public class BigModeController : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        if (!isShrinking)//IsGrounded())
+        if (isGrowing)//IsGrounded())
         {
-            rigidbody.AddForce(persistentBoost);
+            rigidbody.AddForce(growBoost);
             //rigidbody3D.AddForce(persistentBoost);
         }
-        else
+        else if (isShrinking)
         {
             rigidbody.AddForce(shrinkBoost);
             //rigidbody3D.AddForce(shrinkBoost);
@@ -65,6 +66,7 @@ public class BigModeController : MonoBehaviour
 
     IEnumerator Grow()
     {
+        isGrowing = true;
         Vector3 initialSize = transform.localScale;
         Vector3 initialBackgroundSize = background.transform.localScale;
         float initialCam = camera.m_Lens.OrthographicSize;
@@ -79,6 +81,7 @@ public class BigModeController : MonoBehaviour
             transposer.m_ScreenX = Mathf.Lerp(initialCamX, cameraXMax, growTimeCounter / growTime);
             yield return null;
         }
+        isGrowing = false;
     }
 
     public void ShrinkDisable()

@@ -11,6 +11,7 @@ public class Bullets : MonoBehaviour
     [SerializeField] float bulletSpriteRotation;
     [SerializeField] bool inMainMenu;
     [SerializeField] float teleportOffset;
+    [SerializeField] bool killParent;
 
     private Vector2 spawnPoint;
     private float timer = 0f;
@@ -31,7 +32,17 @@ public class Bullets : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        if (timer > bulletLife) Destroy(this.gameObject);
+        if (timer > bulletLife)
+        {
+            if (killParent)
+            {
+                Destroy(this.transform.parent.gameObject);
+            }
+            else
+            {
+                Destroy(this.gameObject);
+            }
+        }
         timer += Time.deltaTime;
         transform.position = Movement();
         if (customRotation)

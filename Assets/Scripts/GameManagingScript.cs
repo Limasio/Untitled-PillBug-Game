@@ -17,6 +17,8 @@ public class GameManagingScript : MonoBehaviour
     public AudioMixer SFXAudioMixer;
     public AudioMixer MusicAudioMixer;
 
+    string mouseSens = "MouseSens";
+
     private void Awake()
     {
         //pauseMenu = pauseScreen.GetComponent<PauseMenu>();
@@ -32,6 +34,7 @@ public class GameManagingScript : MonoBehaviour
     {
         SFXAudioMixer.SetFloat("VolumeSFX", PlayerPrefs.GetFloat("VolumeSFX"));
         MusicAudioMixer.SetFloat("VolumeMusic", PlayerPrefs.GetFloat("VolumeMusic"));
+        virtualCursor.GetComponent<VirtualMouseInput>().cursorSpeed = PlayerPrefs.GetFloat(mouseSens);
     }
 
     // Update is called once per frame

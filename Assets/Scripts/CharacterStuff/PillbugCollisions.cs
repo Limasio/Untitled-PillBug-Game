@@ -11,6 +11,7 @@ public class PillbugCollisions : MonoBehaviour
     [SerializeField] float hitDelay;
     [SerializeField] GameObject FlyExplosion;
     [SerializeField] GameObject FireFlyExplosion;
+    [SerializeField] GameObject FlyBushLeaves;
     [SerializeField] Animator animator;
 
     [SerializeField] int flashNum;
@@ -19,11 +20,13 @@ public class PillbugCollisions : MonoBehaviour
     private float delayCounter;
     private bool canHit;
     private int angVelocityCounter;
+    private bool isSpinning;
 
     // Start is called before the first frame update
     void Start()
     {
         canHit = true;
+        isSpinning = false;
     }
 
     // Update is called once per frame
@@ -62,10 +65,12 @@ public class PillbugCollisions : MonoBehaviour
         if (angVelocityCounter >= 10)
         {
             animator.SetBool("Spinning", true);
+            isSpinning = true;
         }
         else
         {
             animator.SetBool("Spinning", false);
+            isSpinning = false;
         }
     }
 
@@ -95,15 +100,80 @@ public class PillbugCollisions : MonoBehaviour
                 ScoreManager.instance.AddScore(2100);
                 Debug.Log("AddingLightningBoltScore");
             }
-            StartCoroutine(InvFlash(flashDelay, flashNum, spriteRenderer));
             Destroy(collision.gameObject);
-            AudioManager.instance.PlayOneShot(FMODEvents.instance.playerHurt, this.transform.position);
-            rigidbody.velocity = new Vector2(0f, 0f);
-            rigidbody.angularVelocity = 100f;
-            rigidbody.AddForce(knockback, ForceMode2D.Impulse);
-            timer.LoseTime(timePenalty);
-            canHit = false;
-            delayCounter = 0;
+            
+            if (!isSpinning)
+            {
+                StartCoroutine(InvFlash(flashDelay, flashNum, spriteRenderer));
+                AudioManager.instance.PlayOneShot(FMODEvents.instance.playerHurt, this.transform.position);
+                rigidbody.velocity = new Vector2(0f, 0f);
+                rigidbody.angularVelocity = 100f;
+                rigidbody.AddForce(knockback, ForceMode2D.Impulse);
+                timer.LoseTime(timePenalty);
+                canHit = false;
+                delayCounter = 0;
+            }
+            else
+            {
+                AudioManager.instance.PlayOneShot(FMODEvents.instance.explosion, this.transform.position);
+            }
+        }
+    }
+
+    void OnCollisionEnter2D(Collision2D collision)
+    {
+        Debug.Log("collided with: " + collision.gameObject);
+        if (collision.gameObject.layer != 9 && collision.gameObject.layer != 3 && collision.gameObject.layer != 8 && isSpinning)
+        {
+            
+            //Instantiate(DestructionPrefab, collision.gameObject.transform.position, Quaternion.identity);
+            //audioSource.PlayOneShot(explode, 0.5f);
+            
+            if (collision.gameObject.GetComponent<Fly>() != null)
+            {
+                ScoreManager.instance.AddScore(1700);
+                Debug.Log("rolled over: " + collision.gameObject);
+                Debug.Log("AddingFlyScore");
+                Instantiate(FlyExplosion, collision.gameObject.transform.position, Quaternion.identity);
+                AudioManager.instance.PlayOneShot(FMODEvents.instance.explosion, this.transform.position);
+                Destroy(collision.gameObject);
+            }
+            else if (collision.gameObject.GetComponent<FlyBush>() != null)
+            {
+                ScoreManager.instance.AddScore(2600);
+                Debug.Log("rolled over: " + collision.gameObject);
+                Debug.Log("AddingFlyBushScore");
+                AudioManager.instance.PlayOneShot(FMODEvents.instance.explosion, this.transform.position);
+                Instantiate(FlyBushLeaves, collision.gameObject.transform.position, Quaternion.identity);
+                Destroy(collision.gameObject);
+            }
+            else if (collision.gameObject.GetComponent<FireFly>() != null)
+            {
+                ScoreManager.instance.AddScore(3700);
+                Debug.Log("rolled over: " + collision.gameObject);
+                Debug.Log("AddingFireFlyScore");
+                AudioManager.instance.PlayOneShot(FMODEvents.instance.explosion, this.transform.position);
+                Instantiate(FireFlyExplosion, collision.gameObject.transform.position, Quaternion.identity);
+                Destroy(collision.gameObject);
+            }
+            else if (collision.gameObject.GetComponent<LightningBolt>() != null)
+            {
+                ScoreManager.instance.AddScore(2100);
+                AudioManager.instance.PlayOneShot(FMODEvents.instance.explosion, this.transform.position);
+                Debug.Log("rolled over: " + collision.gameObject);
+                Debug.Log("AddingLightningBoltScore");
+                Destroy(collision.gameObject);
+            }
+            
+            
+        }
+        else if (collision.gameObject.layer == 8 && isSpinning)
+        {
+            Debug.Log("Destroyed Timer");
+            timer.AddTime(false);
+            //Instantiate(DestructionPrefab, collision.gameObject.transform.position, Quaternion.identity);
+            AudioManager.instance.PlayOneShot(FMODEvents.instance.explosion, this.transform.position);
+            Destroy(collision.gameObject);
         }
     }
 

@@ -3012,13 +3012,13 @@ MonoBehaviour:
   isBigMode: 0
   bigCharges: 0
   bigChargeMax: 1
-  bigChargeTime: 30
+  bigChargeTime: 50
   bigChargeTimeCounter: 0
   bigTime: 10
   bigTimeLeft: 0
   bigModeBoost: 1.5
-  bigModeInitialBoost: {x: 20000, y: 40000}
-  bigModeInitialRotate: -10000
+  bigModeInitialBoost: {x: 100, y: 500}
+  bigModeInitialRotate: -100
   bigChargeSlider: {fileID: 289240748}
   ArrowScript: {fileID: 381532784}
   sliderImage: {fileID: 1252893310}
@@ -5497,8 +5497,8 @@ MonoBehaviour:
   camera: {fileID: 113172042}
   cameraMax: 27
   cameraXMax: 0.1
-  persistentBoost: {x: 35000, y: 5000}
-  shrinkBoost: {x: 35000, y: 37500}
+  growBoost: {x: 960, y: 80}
+  shrinkBoost: {x: 350, y: 200}
   timer: {fileID: 825929992}
   background: {fileID: 107452887}
   DestructionPrefab: {fileID: 3549940481609144435, guid: 476efeb4ece8af44a9e964405f392236, type: 3}
@@ -5541,10 +5541,10 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 750
+  m_Mass: 10
   m_LinearDrag: 0
   m_AngularDrag: 0
-  m_GravityScale: 5
+  m_GravityScale: 4
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
@@ -5578,7 +5578,7 @@ CircleCollider2D:
     m_Bits: 4294967295
   m_ForceReceiveLayers:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 512
   m_ContactCaptureLayers:
     serializedVersion: 2
     m_Bits: 4294967295
@@ -7288,6 +7288,7 @@ GameObject:
   - component: {fileID: 1027186435}
   - component: {fileID: 1027186439}
   - component: {fileID: 1027186437}
+  - component: {fileID: 1027186447}
   - component: {fileID: 1027186441}
   - component: {fileID: 1027186443}
   - component: {fileID: 1027186444}
@@ -7367,7 +7368,7 @@ Rigidbody2D:
   m_UseAutoMass: 0
   m_Mass: 1
   m_LinearDrag: 0
-  m_AngularDrag: 0.05
+  m_AngularDrag: 0.01
   m_GravityScale: 2
   m_Material: {fileID: 0}
   m_IncludeLayers:
@@ -7508,6 +7509,7 @@ MonoBehaviour:
   hitDelay: 1
   FlyExplosion: {fileID: 3960834257006657716, guid: d10fa04cd373b6b45928cc6415f0cc0b, type: 3}
   FireFlyExplosion: {fileID: 169553758643738893, guid: df220c4964e5dd94b8a5960fb7137bdd, type: 3}
+  FlyBushLeaves: {fileID: 3549940481609144435, guid: 672a4d3180da1bc47b6279ea3b8ffdb6, type: 3}
   animator: {fileID: 1027186444}
   flashNum: 3
   flashDelay: 0.2
@@ -7564,6 +7566,41 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!58 &1027186447
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1027186433}
+  m_Enabled: 0
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 1.5
 --- !u!1 &1072791375
 GameObject:
   m_ObjectHideFlags: 0

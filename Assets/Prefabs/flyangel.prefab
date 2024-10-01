@@ -88,6 +88,7 @@ MonoBehaviour:
   bulletSpriteRotation: 0
   inMainMenu: 0
   teleportOffset: 0
+  killParent: 1
 --- !u!1 &8848162375309589657
 GameObject:
   m_ObjectHideFlags: 0
