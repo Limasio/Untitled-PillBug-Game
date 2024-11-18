@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using UnityEngine.SceneManagement;
+using UnityEngine.InputSystem.UI;
 using System.Security.Cryptography;
 
 public class TimerManager : MonoBehaviour
@@ -14,6 +15,8 @@ public class TimerManager : MonoBehaviour
     [SerializeField] ScoreManager scoreManager;
 
     [SerializeField] GameObject GameOverPanel;
+
+    [SerializeField] GameObject virtualCursor;
 
     public bool hasTimerStarted;
 
@@ -27,6 +30,7 @@ public class TimerManager : MonoBehaviour
     [SerializeField] float timeBonus3min;
     [SerializeField] float timeBonus5min;
     [SerializeField] float timeBonus7min30sec;
+
     [SerializeField] GameObject music;
 
     public float globalTimer { get; private set; }
@@ -164,12 +168,15 @@ public class TimerManager : MonoBehaviour
     void GameOver()
     {
         hasGameEnded = true;
+        virtualCursor.GetComponent<VirtualCursorTest>().enabled = false;
+        virtualCursor.GetComponent<VirtualMouseInput>().enabled = false;
         hasTimerStarted = false;
         scoreManager.ScoreCheck();
         AudioManager.instance.StopMusic();
         AudioManager.instance.PlayOneShot(FMODEvents.instance.gameOverSax, this.transform.position);
         timerText.text = "00:00";
         GameOverPanel.SetActive(true);
+        Cursor.lockState = CursorLockMode.None;
         Time.timeScale = 0f;
         // SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         //SceneManager.LoadScene(sceneName:"MainMenu");

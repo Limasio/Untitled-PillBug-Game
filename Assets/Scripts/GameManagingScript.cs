@@ -9,6 +9,7 @@ public class GameManagingScript : MonoBehaviour
 {
     public GameObject pauseScreen;
     [SerializeField] private PauseMenu pauseMenu;
+    [SerializeField] TimerManager timerManager;
     [SerializeField] ScoreManager scoreManager;
     [SerializeField] GameObject virtualCursor;
 
@@ -43,6 +44,12 @@ public class GameManagingScript : MonoBehaviour
         if (pauseMenu.gameIsPaused)
         {
             gameIsPaused = true;
+            virtualCursor.GetComponent<VirtualCursorTest>().enabled = false;
+            virtualCursor.GetComponent<VirtualMouseInput>().enabled = false;
+            Cursor.lockState = CursorLockMode.None;
+        }
+        else if (timerManager.hasGameEnded)
+        {
             virtualCursor.GetComponent<VirtualCursorTest>().enabled = false;
             virtualCursor.GetComponent<VirtualMouseInput>().enabled = false;
             Cursor.lockState = CursorLockMode.None;

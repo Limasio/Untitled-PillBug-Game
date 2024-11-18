@@ -1242,6 +1242,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pauseScreen: {fileID: 256936095}
   pauseMenu: {fileID: 278129604}
+  timerManager: {fileID: 825929992}
   scoreManager: {fileID: 1703275357}
   virtualCursor: {fileID: 2037746921}
   gameIsPaused: 0
@@ -6538,6 +6539,7 @@ MonoBehaviour:
   timeBonus: 30
   scoreManager: {fileID: 1703275357}
   GameOverPanel: {fileID: 514571178}
+  virtualCursor: {fileID: 2037746921}
   hasTimerStarted: 0
   timeBonusInitial: 25
   timeBonus45sec: 22.5
