@@ -14,7 +14,7 @@ public class MainMenu : MonoBehaviour
 
     private void Awake()
     {
-        Panel.transform.GetChild(1).GetComponent<Slider>().value = PlayerPrefs.GetFloat(volumeMain);
+        //Panel.transform.GetChild(1).GetComponent<Slider>().value = PlayerPrefs.GetFloat("Volume");
     }
 
     private void Start()
